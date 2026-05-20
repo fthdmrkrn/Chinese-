@@ -42,8 +42,9 @@ h1{font-family:var(--f-zh);font-weight:900;font-size:1.35rem;margin:11px 0 2px}
 .s-ok .num{color:var(--ok)}.s-err .num{color:var(--red)}.s-tot .num{color:var(--gold)}
 .reset-btn{border:none;background:rgba(0,0,0,.07);color:var(--ink);font-family:var(--f-ui);font-size:.68rem;font-weight:600;padding:7px 11px;border-radius:30px;cursor:pointer;white-space:nowrap}
 .reset-btn:hover{background:rgba(200,53,43,.1);color:var(--red)}
-nav{display:flex;gap:5px;margin:13px 0;background:rgba(255,255,255,.5);padding:5px;border-radius:15px;border:1px solid var(--line);backdrop-filter:blur(6px)}
-nav button{flex:1;border:none;background:none;font-family:var(--f-ui);font-weight:600;font-size:.68rem;color:var(--ink);padding:9px 2px;border-radius:10px;cursor:pointer;transition:.2s;opacity:.46}
+nav{display:flex;gap:5px;margin:13px 0;background:rgba(255,255,255,.5);padding:5px;border-radius:15px;border:1px solid var(--line);backdrop-filter:blur(6px);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;border:none;background:none;font-family:var(--f-ui);font-weight:600;font-size:.65rem;color:var(--ink);padding:9px 10px;border-radius:10px;cursor:pointer;transition:.2s;opacity:.46;white-space:nowrap}
 nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5px 12px rgba(0,0,0,.16)}
 .panel{display:none;animation:fade .3s ease}.panel.on{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
@@ -182,6 +183,56 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
 .gex .gex-note{font-size:.74rem;opacity:.5;font-style:italic;margin-top:2px}
 .gpuf{background:rgba(214,164,76,.12);border:1px solid rgba(214,164,76,.35);border-radius:10px;padding:8px 12px;margin-top:10px;font-size:.8rem;line-height:1.6}
 .gpuf::before{content:"💡 Püf: ";font-weight:700;color:#7a5500}
+
+/* NUMBERS */
+.num-tabs{display:flex;gap:6px;margin-bottom:12px}
+.num-tab{flex:1;border:2px solid var(--line);background:rgba(255,255,255,.5);border-radius:11px;font-family:var(--f-ui);font-weight:700;font-size:.78rem;padding:8px;cursor:pointer;color:var(--ink);opacity:.52;transition:.2s}
+.num-tab.on{background:var(--ink);color:var(--paper);border-color:var(--ink);opacity:1}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:13px}
+.num-card{background:rgba(255,255,255,.72);border:1.5px solid var(--line);border-radius:13px;padding:9px 5px;text-align:center;cursor:pointer;transition:.2s;-webkit-tap-highlight-color:transparent}
+.num-card:active{transform:scale(.94);background:rgba(200,53,43,.06);border-color:var(--red)}
+.num-card .n-zh{font-family:var(--f-zh);font-size:1.45rem;font-weight:900;color:var(--ink);line-height:1}
+.num-card .n-pin{font-family:var(--f-pin);font-size:.65rem;font-weight:600;color:var(--red);margin-top:3px}
+.num-card .n-val{font-size:.7rem;opacity:.42;margin-top:1px}
+.num-note{background:rgba(214,164,76,.12);border:1px solid rgba(214,164,76,.35);border-radius:10px;padding:8px 12px;font-size:.8rem;line-height:1.6;margin-bottom:12px}
+.num-note strong{color:#7a5500}
+.mw-card{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:9px}
+.mw-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.mw-zh{font-family:var(--f-zh);font-size:2.4rem;font-weight:900;color:var(--red);line-height:1;width:46px;text-align:center}
+.mw-info{flex:1}
+.mw-info .mw-pin{font-family:var(--f-pin);font-size:1rem;font-weight:700;color:var(--red)}
+.mw-info .mw-use{font-size:.8rem;opacity:.6;margin-top:2px}
+.mw-sound-btn{background:none;border:1px solid var(--line);border-radius:20px;padding:3px 9px;font-size:.72rem;cursor:pointer;font-family:var(--f-ui);font-weight:600;color:var(--ink);flex-shrink:0}
+.mw-sound-btn:hover{background:rgba(200,53,43,.07);border-color:var(--red);color:var(--red)}
+.mw-ex{background:rgba(63,126,110,.07);border-left:3px solid var(--jade);border-radius:0 9px 9px 0;padding:7px 10px;margin-bottom:5px}
+.mw-ex .mx-zh{font-family:var(--f-zh-sm);font-size:1rem;font-weight:700}
+.mw-ex .mx-pin{font-family:var(--f-pin);font-size:.78rem;color:var(--red);font-weight:500;margin:1px 0}
+.mw-ex .mx-tr{font-size:.78rem;font-weight:600;opacity:.8}
+
+/* SENTENCE ORDER */
+.sorder-hdr{background:rgba(255,255,255,.62);border:1px solid var(--line);border-radius:15px;padding:12px 14px;margin-bottom:11px;font-size:.82rem;line-height:1.6;opacity:.82}
+.sorder-hdr strong{color:var(--red)}
+.sorder-card{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:22px;padding:22px 18px;box-shadow:0 12px 28px rgba(0,0,0,.08);margin-bottom:11px}
+.so-progress{font-size:.68rem;opacity:.38;text-align:center;margin-bottom:10px}
+.so-tr{font-size:1.05rem;font-weight:700;text-align:center;margin-bottom:14px;color:var(--ink)}
+.so-answer-label{font-size:.7rem;font-weight:700;opacity:.4;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.so-answer{min-height:54px;background:rgba(63,126,110,.06);border:2px dashed rgba(63,126,110,.28);border-radius:13px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:12px;transition:.25s}
+.so-answer.correct{border-color:var(--ok);background:rgba(45,138,94,.1);border-style:solid}
+.so-answer.wrong{border-color:var(--red);background:rgba(200,53,43,.05);border-style:solid;animation:shake .3s ease}
+.so-tiles-label{font-size:.7rem;font-weight:700;opacity:.4;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.so-tiles{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;min-height:44px}
+.so-tile,.so-placed{border-radius:10px;padding:8px 13px;font-family:var(--f-zh-sm);font-size:1.1rem;font-weight:700;cursor:pointer;transition:.18s;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.so-tile{background:rgba(255,255,255,.9);border:2px solid var(--line)}
+.so-tile:hover{border-color:var(--red);background:rgba(200,53,43,.05)}
+.so-tile.used{opacity:0;pointer-events:none;transform:scale(.75)}
+.so-placed{background:var(--ink);color:var(--paper);border:2px solid var(--ink)}
+.so-placed:hover{background:rgba(26,20,16,.75)}
+.so-pin{font-family:var(--f-pin);font-size:.9rem;color:var(--red);text-align:center;opacity:0;transition:.35s;margin-top:4px;margin-bottom:8px;font-weight:600}
+.so-pin.show{opacity:1}
+.so-result{text-align:center;font-size:.84rem;font-weight:700;min-height:20px;margin-bottom:10px}
+.so-result.ok{color:var(--ok)}.so-result.err{color:var(--red)}
+.so-actions{display:flex;gap:8px}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
 </style>
 </head>
 <body>
@@ -205,6 +256,8 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
     <button class="on" data-p="vocab">📖 Kelime</button>
     <button data-p="quiz">🎯 Test</button>
     <button data-p="write">✍️ Yaz</button>
+    <button data-p="numbers">🔢 Sayılar</button>
+    <button data-p="sorala">🃏 Sırala</button>
     <button data-p="sent">💬 Cümle</button>
     <button data-p="gram">📘 Gramer</button>
   </nav>
@@ -282,6 +335,24 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
 
   <!-- GRAMMAR -->
   <div id="gram" class="panel"></div>
+
+  <!-- NUMBERS -->
+  <div id="numbers" class="panel">
+    <div class="num-tabs">
+      <button class="num-tab on" id="nt-num" onclick="switchNumTab('num')">🔢 Sayılar (0–100)</button>
+      <button class="num-tab" id="nt-mw" onclick="switchNumTab('mw')">📦 Ölçü Kelimeleri</button>
+    </div>
+    <div id="numSection"></div>
+    <div id="mwSection" style="display:none"></div>
+  </div>
+
+  <!-- SENTENCE ORDER -->
+  <div id="sorala" class="panel">
+    <div class="sorder-hdr">
+      <strong>Cümle Sıralama:</strong> Türkçe anlamı görürsün, Çince kelimelere doğru sırayla dokun. Yanlışsa geri al!
+    </div>
+    <div class="sorder-card" id="soCard"></div>
+  </div>
 </div>
 
 <script>
@@ -298,8 +369,68 @@ const DATA={
 "Fiiller 动词":[["在","zài","-de bulunmak","located"],["有","yǒu","sahip olmak","to have"],["说","shuō","konuşmak","to speak"],["要","yào","istemek","to want"],["会","huì","yapabilmek","know how to"],["及","jí","yetişmek","to reach"],["能","néng","-ebilmek","be able to"],["可以","kěyǐ","-abilir","can"],["来","lái","gelmek","to come"],["等","děng","beklemek","to wait"],["让","ràng","izin vermek","to allow"],["做","zuò","yapmak","to do"],["想","xiǎng","istemek, özlemek","to wish"],["去","qù","gitmek","to go"],["表示","biǎoshì","göstermek","to show"],["看","kàn","bakmak, izlemek","to see"],["觉得","juéde","düşünmek","to think"],["使用","shǐyòng","kullanmak","to use"],["知道","zhīdào","bilmek","to know"],["没有","méiyǒu","yok, -madı","not have"]],
 "Sıfat & Zarf 形容词":[["都","dōu","hepsi","all"],["大","dà","büyük","big"],["最","zuì","en","most"],["好","hǎo","iyi","good"],["更","gèng","daha da","even more"],["每","měi","her","every"],["只","zhǐ","sadece","only"],["小","xiǎo","küçük","small"],["新","xīn","yeni","new"],["已经","yǐjīng","zaten","already"],["高","gāo","uzun, yüksek","tall"]],
 "Edatlar 介词":[["上","shàng","üstünde","on, above"],["中","zhōng","ortada","center"],["里","lǐ","içinde","inside"],["下","xià","altında","under"]],
-"Bağlaçlar 连词":[["和","hé","ve","and"],["就","jiù","o zaman","then"],["但是","dànshì","ama, fakat","but"],["或","huò","veya","or"],["因为","yīnwèi","çünkü","because"],["所以","suǒyǐ","bu yüzden","so"],["如果","rúguǒ","eğer","if"],["跟","gēn","ile","with"]]
+"Bağlaçlar 连词":[["和","hé","ve","and"],["就","jiù","o zaman","then"],["但是","dànshì","ama, fakat","but"],["或","huò","veya","or"],["因为","yīnwèi","çünkü","because"],["所以","suǒyǐ","bu yüzden","so"],["如果","rúguǒ","eğer","if"],["跟","gēn","ile","with"]],
+"Renkler 颜色":[["红色","hóng sè","kırmızı","red"],["蓝色","lán sè","mavi","blue"],["绿色","lǜ sè","yeşil","green"],["黄色","huáng sè","sarı","yellow"],["黑色","hēi sè","siyah","black"],["白色","bái sè","beyaz","white"],["橙色","chéng sè","turuncu","orange"],["紫色","zǐ sè","mor","purple"],["粉色","fěn sè","pembe","pink"],["灰色","huī sè","gri","grey"],["棕色","zōng sè","kahverengi","brown"],["金色","jīn sè","altın rengi","gold"]],
+"Günler 星期":[["星期一","xīngqī yī","Pazartesi","Monday"],["星期二","xīngqī èr","Salı","Tuesday"],["星期三","xīngqī sān","Çarşamba","Wednesday"],["星期四","xīngqī sì","Perşembe","Thursday"],["星期五","xīngqī wǔ","Cuma","Friday"],["星期六","xīngqī liù","Cumartesi","Saturday"],["星期天","xīngqī tiān","Pazar","Sunday"],["周末","zhōumò","hafta sonu","weekend"],["工作日","gōngzuòrì","iş günü","weekday"]],
+"Aylar 月份":[["一月","yī yuè","Ocak","January"],["二月","èr yuè","Şubat","February"],["三月","sān yuè","Mart","March"],["四月","sì yuè","Nisan","April"],["五月","wǔ yuè","Mayıs","May"],["六月","liù yuè","Haziran","June"],["七月","qī yuè","Temmuz","July"],["八月","bā yuè","Ağustos","August"],["九月","jiǔ yuè","Eylül","September"],["十月","shí yuè","Ekim","October"],["十一月","shí yī yuè","Kasım","November"],["十二月","shí èr yuè","Aralık","December"]]
 };
+/* ════ NUMBERS DATA ════ */
+const NUMS=[
+  ["零","líng","0"],["一","yī","1"],["二","èr","2"],["三","sān","3"],["四","sì","4"],
+  ["五","wǔ","5"],["六","liù","6"],["七","qī","7"],["八","bā","8"],["九","jiǔ","9"],
+  ["十","shí","10"],["十一","shí yī","11"],["十二","shí èr","12"],["十三","shí sān","13"],
+  ["十四","shí sì","14"],["十五","shí wǔ","15"],["十六","shí liù","16"],["十七","shí qī","17"],
+  ["十八","shí bā","18"],["十九","shí jiǔ","19"],["二十","èr shí","20"],
+  ["二十一","èr shí yī","21"],["二十二","èr shí èr","22"],["二十三","èr shí sān","23"],
+  ["二十四","èr shí sì","24"],["二十五","èr shí wǔ","25"],["三十","sān shí","30"],
+  ["四十","sì shí","40"],["五十","wǔ shí","50"],["六十","liù shí","60"],
+  ["七十","qī shí","70"],["八十","bā shí","80"],["九十","jiǔ shí","90"],["一百","yī bǎi","100"]
+];
+const MEASURE=[
+  {mw:"个",pin:"gè",use:"Genel ölçü — çoğu şey için geçer",
+   exs:[["三个朋友","sān gè péngyǒu","üç arkadaş"],["两个人","liǎng gè rén","iki kişi"],["一个苹果","yī gè píngguǒ","bir elma"]]},
+  {mw:"本",pin:"běn",use:"Ciltli şeyler: kitap, defter, dergi",
+   exs:[["一本书","yī běn shū","bir kitap"],["两本杂志","liǎng běn zázhì","iki dergi"],["三本字典","sān běn zìdiǎn","üç sözlük"]]},
+  {mw:"张",pin:"zhāng",use:"Düz/yassı: kağıt, masa, bilet, yüz",
+   exs:[["一张纸","yī zhāng zhǐ","bir kağıt"],["两张票","liǎng zhāng piào","iki bilet"],["三张桌子","sān zhāng zhuōzi","üç masa"]]},
+  {mw:"杯",pin:"bēi",use:"Bardak/fincan içecekler",
+   exs:[["一杯茶","yī bēi chá","bir bardak çay"],["两杯咖啡","liǎng bēi kāfēi","iki fincan kahve"],["三杯水","sān bēi shuǐ","üç bardak su"]]},
+  {mw:"只",pin:"zhī",use:"Küçük hayvanlar, el, ayak, kulak",
+   exs:[["一只猫","yī zhī māo","bir kedi"],["两只狗","liǎng zhī gǒu","iki köpek"],["三只鸟","sān zhī niǎo","üç kuş"]]},
+  {mw:"条",pin:"tiáo",use:"Uzun ince: balık, havlu, yol, kot",
+   exs:[["一条鱼","yī tiáo yú","bir balık"],["两条裤子","liǎng tiáo kùzi","iki pantolon"],["一条路","yī tiáo lù","bir yol"]]},
+  {mw:"件",pin:"jiàn",use:"Kıyafet parçaları ve işler/meseleler",
+   exs:[["一件衬衫","yī jiàn chènshān","bir gömlek"],["两件事","liǎng jiàn shì","iki mesele"],["三件毛衣","sān jiàn máoyī","üç kazak"]]},
+  {mw:"瓶",pin:"píng",use:"Şişe içecekler",
+   exs:[["一瓶水","yī píng shuǐ","bir şişe su"],["两瓶啤酒","liǎng píng píjiǔ","iki şişe bira"],["三瓶果汁","sān píng guǒzhī","üç şişe meyve suyu"]]},
+  {mw:"位",pin:"wèi",use:"Kişiler için saygılı ölçü kelimesi",
+   exs:[["一位老师","yī wèi lǎoshī","bir öğretmen (saygılı)"],["两位客人","liǎng wèi kèrén","iki misafir"]]},
+  {mw:"辆",pin:"liàng",use:"Tekerlekli araçlar: araba, bisiklet",
+   exs:[["一辆车","yī liàng chē","bir araba"],["两辆自行车","liǎng liàng zìxíngchē","iki bisiklet"]]}
+];
+const SORALA=[
+  {parts:["我","是","学生"],pin:"wǒ shì xuésheng",tr:"Ben öğrenciyim"},
+  {parts:["你","叫","什么","名字","?"],pin:"nǐ jiào shénme míngzi?",tr:"Adın ne?"},
+  {parts:["他","不","在家"],pin:"tā bú zài jiā",tr:"O evde değil"},
+  {parts:["我","很","高兴","认识","你"],pin:"wǒ hěn gāoxìng rènshi nǐ",tr:"Tanıştığıma memnun oldum"},
+  {parts:["今天","天气","很","好"],pin:"jīntiān tiānqì hěn hǎo",tr:"Bugün hava çok güzel"},
+  {parts:["我","要","去","学校"],pin:"wǒ yào qù xuéxiào",tr:"Okula gitmek istiyorum"},
+  {parts:["我","的","朋友","很","好"],pin:"wǒ de péngyǒu hěn hǎo",tr:"Arkadaşım çok iyi"},
+  {parts:["你","去","哪里","?"],pin:"nǐ qù nǎlǐ?",tr:"Nereye gidiyorsun?"},
+  {parts:["我","没有","时间"],pin:"wǒ méiyǒu shíjiān",tr:"Zamanım yok"},
+  {parts:["书","在","桌子","上"],pin:"shū zài zhuōzi shàng",tr:"Kitap masanın üstünde"},
+  {parts:["我","在","吃饭"],pin:"wǒ zài chī fàn",tr:"Yemek yiyorum"},
+  {parts:["他","比","我","高"],pin:"tā bǐ wǒ gāo",tr:"O benden daha uzun"},
+  {parts:["明天","会","下雨"],pin:"míngtiān huì xià yǔ",tr:"Yarın yağmur yağacak"},
+  {parts:["因为","下雨","所以","我","没去"],pin:"yīnwèi xià yǔ suǒyǐ wǒ méi qù",tr:"Yağmur yağdığı için gitmedim"},
+  {parts:["如果","你","来","就","好了"],pin:"rúguǒ nǐ lái jiù hǎo le",tr:"Gelirsen iyi olur"},
+  {parts:["三","个","朋友","来了"],pin:"sān gè péngyǒu lái le",tr:"Üç arkadaş geldi"},
+  {parts:["我","去过","中国"],pin:"wǒ qù guò Zhōngguó",tr:"Çin'e gittim (daha önce)"},
+  {parts:["你","想","喝","什么","?"],pin:"nǐ xiǎng hē shénme?",tr:"Ne içmek istersin?"},
+  {parts:["她","正在","看书","呢"],pin:"tā zhèngzài kàn shū ne",tr:"O kitap okuyor (şu an)"},
+  {parts:["这个","比","那个","贵"],pin:"zhège bǐ nàge guì",tr:"Bu şundan daha pahalı"}
+];
+
 const SENT=[
 ["我是学生","wǒ shì xuésheng","Ben öğrenciyim","I am a student"],
 ["你是中国人吗?","nǐ shì Zhōngguó rén ma?","Sen Çinli misin?","Are you Chinese?"],
@@ -681,7 +812,9 @@ document.getElementById('sent').innerHTML=SENT.map(s=>
     const bl = badgeLabel[g.badge]||'';
     let exHtml = (g.exs||[]).map(e =>
       '<div class="gex">'
-      +'<div class="gex-zh">'+e[0]+'</div>'
+      +'<div class="gex-zh">'+e[0]
+      +'<button class="s-sound" onclick="event.stopPropagation();speak(\''+e[0].replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')" title="Dinle">🔊</button>'
+      +'</div>'
       +'<div class="gex-pin">'+e[1]+'</div>'
       +'<div class="gex-tr">'+e[2]+'</div>'
       +(e[3]?'<div class="gex-note">'+e[3]+'</div>':'')
@@ -722,6 +855,105 @@ document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
   b.classList.add('on');
   document.getElementById(b.dataset.p).classList.add('on');
 });
+
+/* ════ NUMBERS PANEL ════ */
+let numTab='num';
+function switchNumTab(t){
+  numTab=t;
+  document.getElementById('nt-num').classList.toggle('on',t==='num');
+  document.getElementById('nt-mw').classList.toggle('on',t==='mw');
+  document.getElementById('numSection').style.display=t==='num'?'block':'none';
+  document.getElementById('mwSection').style.display=t==='mw'?'block':'none';
+}
+(function buildNumbers(){
+  const sec=document.getElementById('numSection');
+  sec.innerHTML='<div class="num-note">💡 <strong>2 sayısı:</strong> Ölçü kelimesiyle <strong>两 liǎng</strong> kullan: 两个人 (iki kişi). Sıra sayısında 二 (èr) kullanılır. &nbsp;·&nbsp; <strong>一 yī</strong> 4. ton önünde yí, 1./2./3. ton önünde yì olur.</div><div class="num-grid" id="numGrid"></div>';
+  const grid=document.getElementById('numGrid');
+  NUMS.forEach(n=>{
+    const c=document.createElement('div');c.className='num-card';
+    c.innerHTML='<div class="n-zh">'+n[0]+'</div><div class="n-pin">'+n[1]+'</div><div class="n-val">'+n[2]+'</div>';
+    c.onclick=()=>speak(n[0]);
+    grid.appendChild(c);
+  });
+  const mwSec=document.getElementById('mwSection');
+  mwSec.innerHTML='<div class="num-note">💡 Çincede <strong>sayı + ölçü kelimesi + isim</strong> zorunludur. "Üç kitap" değil → 三 本 书. Bilmiyorsan <strong>个 gè</strong> çoğu zaman işe yarar.</div>';
+  MEASURE.forEach(m=>{
+    const ex=m.exs.map(e=>'<div class="mw-ex"><div class="mx-zh">'+e[0]+'<button class="mw-sound-btn" onclick="event.stopPropagation();speak(\''+e[0].replace(/'/g,"\\'")+'\')" style="margin-left:6px">🔊</button></div><div class="mx-pin">'+e[1]+'</div><div class="mx-tr">'+e[2]+'</div></div>').join('');
+    const d=document.createElement('div');d.className='mw-card';
+    d.innerHTML='<div class="mw-head"><div class="mw-zh">'+m.mw+'</div><div class="mw-info"><div class="mw-pin">'+m.pin+'</div><div class="mw-use">'+m.use+'</div></div><button class="mw-sound-btn" onclick="speak(\''+m.mw+'\')">🔊 Dinle</button></div>'+ex;
+    mwSec.appendChild(d);
+  });
+})();
+
+/* ════ SENTENCE ORDER PANEL ════ */
+let soList=[],soIdx=0,soPlaced=[],soUsed=[];
+function initSorala(){soList=[...SORALA];shuffle(soList);soIdx=0;renderSO();}
+function renderSO(){
+  const card=document.getElementById('soCard');
+  if(soIdx>=soList.length){
+    card.innerHTML='<div style="text-align:center;padding:24px"><div style="font-size:2.5rem;margin-bottom:10px">🎉</div><div style="font-family:Noto Serif SC;font-size:1.5rem;font-weight:900;margin-bottom:8px">Tebrikler!</div><div style="font-size:.84rem;opacity:.6;margin-bottom:18px">Tüm '+SORALA.length+' cümleyi sıraladın!</div><button class="btn-red" onclick="initSorala()" style="padding:13px 28px;font-size:.9rem">↺ Yeniden Başla</button></div>';
+    return;
+  }
+  const s=soList[soIdx];
+  soPlaced=[];soUsed=new Array(s.parts.length).fill(false);
+  const shuffled=[...s.parts.keys()].sort(()=>Math.random()-.5);
+  card.innerHTML=
+    '<div class="so-progress">'+(soIdx+1)+' / '+soList.length+'</div>'
+    +'<div class="so-tr">🇹🇷 '+s.tr+'</div>'
+    +'<div class="so-answer-label">Cümlen ↓</div>'
+    +'<div class="so-answer" id="soAnswer"></div>'
+    +'<div class="so-pin" id="soPin">'+s.pin+'</div>'
+    +'<div class="so-result" id="soResult"></div>'
+    +'<div class="so-tiles-label">Kelimeler ↓</div>'
+    +'<div class="so-tiles" id="soTiles"></div>'
+    +'<div class="so-actions">'
+    +'<button class="btn-grey" id="soResetBtn" style="flex:1;padding:12px;font-size:.84rem">↺ Temizle</button>'
+    +'<button class="btn-red" id="soNextBtn" style="flex:1;padding:12px;font-size:.84rem;display:none">Sonraki →</button>'
+    +'</div>';
+  const tileEl=document.getElementById('soTiles');
+  shuffled.forEach(origIdx=>{
+    const t=document.createElement('span');t.className='so-tile';
+    t.textContent=s.parts[origIdx];t.dataset.idx=origIdx;
+    t.onclick=()=>placeTile(t,origIdx,s);
+    tileEl.appendChild(t);
+  });
+  document.getElementById('soResetBtn').onclick=()=>renderSO();
+  document.getElementById('soNextBtn').onclick=()=>{soIdx++;renderSO();};
+}
+function placeTile(tileEl,origIdx,s){
+  if(soUsed[origIdx])return;
+  soUsed[origIdx]=true;soPlaced.push(origIdx);tileEl.classList.add('used');
+  const ans=document.getElementById('soAnswer');
+  const p=document.createElement('span');p.className='so-placed';p.textContent=s.parts[origIdx];
+  p.onclick=()=>{
+    const pos=soPlaced.lastIndexOf(origIdx);if(pos===-1)return;
+    soPlaced.splice(pos,1);soUsed[origIdx]=false;tileEl.classList.remove('used');p.remove();
+    document.getElementById('soResult').textContent='';document.getElementById('soResult').className='so-result';
+    document.getElementById('soAnswer').classList.remove('correct','wrong');
+  };
+  ans.appendChild(p);
+  if(soPlaced.length===s.parts.length)checkSO(s);
+}
+function checkSO(s){
+  const correct=soPlaced.every((v,i)=>v===i);
+  const ans=document.getElementById('soAnswer');const res=document.getElementById('soResult');
+  ans.classList.add(correct?'correct':'wrong');
+  if(correct){
+    res.textContent='✓ Doğru!';res.className='so-result ok';
+    document.getElementById('soPin').classList.add('show');
+    speak(s.parts.join(''));
+    document.getElementById('soNextBtn').style.display='';
+  } else {
+    res.textContent='✗ Sıra yanlış, tekrar dene!';res.className='so-result err';
+    setTimeout(()=>{
+      ans.classList.remove('wrong');soPlaced=[];soUsed=new Array(s.parts.length).fill(false);
+      document.querySelectorAll('#soAnswer .so-placed').forEach(p=>p.remove());
+      document.querySelectorAll('#soTiles .so-tile').forEach(t=>t.classList.remove('used'));
+      res.textContent='';res.className='so-result';
+    },900);
+  }
+}
+initSorala();
 
 refreshStats();
 </script>

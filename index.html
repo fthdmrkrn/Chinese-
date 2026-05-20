@@ -525,7 +525,7 @@ function speak(text, btn){
   function doSpeak(){
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'zh-CN';
-    u.rate = 0.75;
+    u.rate = 0.6;
     u.pitch = 1;
     // Try to find a Chinese voice; fall back to browser default with lang hint
     const vList = window.speechSynthesis.getVoices();

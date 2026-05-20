@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#c8352b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="汉语">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAD+0lEQVR4nN1XbWhbZRQ+7/2++WyaxnVm0VZL2jTbbOtai65bnUyQjk5qxT+iWFosDnWgc0h/CBMdKAwmDoc/hgw/YMr84SiUyWAKW2rWphXbrR+u31mTJWmSNrk3uTf3+qO0JGlMbmyI4vPr8t5zn/O85z3nnvMiSIOj0S6nrxUazc4xtPGMFdt5up9NJeNfH8noPHx25h870r1dmfV97ctXEJauqJhwNNpl7N9yvgEi0+J2wp6LJ/1YsC0WRUZOATKGZHjtFU/s8CGvRJIJJaQSgUtKBSAlOcDVP+Zv/eyM8d70n6uzvW+yWCyW8egAADhb9cqeD/roP97rE5n5BV0u7r8lSgbrGjXeHRpeeeTxBsNEjdVPVVsFnbUKD09Ob4lI5cEWxmg2q2pPfxiZ7O4VCI4nty0AAGDp1MfMfEWFD2k0Mv795fJge5uH/Kl/B0gSSraTW/YHAQDGz52PMhyvzsWbNQe4yopQ4qXOZd6yK0wFVlh22FVGmh9MgCxDIhhCfNWjwWR7iaZFy267PiEmZGLkd72SjWUVwM7O6csa6sgD33yl41sPeLla24rg8a5/MzPLUE37Ysn2sRprCCdwNOsaCRLRKLVtASDL4L5wEUMIQdnBFqy0vU0kXKN6AAB6cVFrqtub4oRtqBcBAJZv3IxlostfAACwE5OG6yfev3//u0uEzmwmiXCYBgBAkowEjpe4PbsDAOulZzt6RA8AIA46c569YgEAAIzjNxNVt5dfvjXEJ697B67KVW+9QcgYkuNPPenTGY3MlGMwwCwsagsqADBMruns0PPDrpSQU4POUsPOcib+dKv34c4OCgBg6dtLefUWRWXINzf59CZTGT0xlSIAEwR8/Eq/r/Hd46WsRkPeuf6rn3WNGPMRkDMCfNM+n7Wniwm43VEsHsfT30cGfmZYjYYEAPB+8aWizM9LALjv0SXlOxh+bS1jH9C1t23mheXkO6Ko1cQLKoBZXNJ6pu9GzNVWrahSpZCLLzzvsbc9Z/zl1Ede79x8pLK+zmA9/7nAW3aFCyYAAIBkGQzDcSTYbZvE/KFWb82LHVrH68ci9NVrD9w52SdFV1cF00MW9f6LF7Sop8uTULE5o6FIgKqkhAQAQDQtyQSRwHq7PWpbtXy75xjOzMyt/5iW3Frn8RNrYX8ghhM4Mj/RyAoN9aFc3JtVkDyppE8yC0PDa8Gd5Tw2flsrPPuMT/jhRw3l86vT2xwzOWUY7e6N6LpeDUXPnitlYrEt7Tjdj6Iy5E5/auIAgAIA6B9gs9lSPr+a/+SMWumo9d8fyf73AjLmQLaEzAe5bkYAAESzc0zRYFpIJG8KA0i9rRYTzc4xlOK4mJHY2PRf/NN/XwoZBKQAAAAASUVORK5CYII=">
+<title>汉语 · Çince Öğren</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+<style>
+:root{
+  --ink:#1a1410;--paper:#f4ece0;--red:#c8352b;--red-d:#9c241c;--gold:#d6a44c;--jade:#3f7e6e;--line:rgba(26,20,16,.14);--ok:#2d8a5e;
+  --f-ui:'DM Sans',sans-serif;
+  --f-zh:'Noto Serif SC',serif;
+  --f-zh-sm:'Noto Sans SC',sans-serif;
+  --f-pin:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f-ui);color:var(--ink);background:radial-gradient(circle at 85% 12%,rgba(200,53,43,.10),transparent 42%),radial-gradient(circle at 12% 88%,rgba(63,126,110,.10),transparent 42%),#f4ece0;min-height:100vh;overflow-x:hidden;position:relative}
+body::before{content:"汉  语  学  习  中  文  你  好  谢  谢  朋  友";position:fixed;inset:-10% -5%;z-index:0;pointer-events:none;font-family:var(--f-zh);font-size:11vw;opacity:.022;line-height:1.5;color:var(--ink);letter-spacing:2vw;word-spacing:3vw;transform:rotate(-8deg)}
+.lantern{position:fixed;top:-30px;width:44px;height:62px;border-radius:50%/55%;background:radial-gradient(circle at 38% 30%,#e8534a,var(--red-d));box-shadow:0 0 24px rgba(200,53,43,.5);z-index:0;animation:sway 5s ease-in-out infinite}
+.lantern::before{content:"";position:absolute;left:50%;bottom:-12px;width:2px;height:12px;background:var(--gold);transform:translateX(-50%)}
+.lantern::after{content:"福";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC';font-size:19px;color:#ffe9b0}
+.l1{left:7%}.l2{right:9%;top:-50px;animation-delay:1.6s}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.wrap{position:relative;z-index:1;max-width:740px;margin:0 auto;padding:22px 16px 110px}
+header{text-align:center;margin-bottom:14px}
+.seal{display:inline-block;background:var(--red);color:#fff;font-family:var(--f-zh);font-weight:900;font-size:26px;padding:6px 14px;border-radius:10px;box-shadow:3px 3px 0 var(--red-d);transform:rotate(-3deg)}
+h1{font-family:var(--f-zh);font-weight:900;font-size:1.35rem;margin:11px 0 2px}
+.sub{font-size:.76rem;opacity:.5;font-weight:300}
+.statsbar{display:flex;gap:7px;margin:11px 0;flex-wrap:wrap;align-items:center}
+.stat{flex:1;min-width:76px;background:rgba(255,255,255,.65);border:1px solid var(--line);border-radius:13px;padding:9px;text-align:center}
+.stat .num{font-family:'Noto Serif SC';font-size:1.45rem;font-weight:900}
+.stat .lbl{font-size:.63rem;opacity:.46;margin-top:1px}
+.s-ok .num{color:var(--ok)}.s-err .num{color:var(--red)}.s-tot .num{color:var(--gold)}
+.reset-btn{border:none;background:rgba(0,0,0,.07);color:var(--ink);font-family:var(--f-ui);font-size:.68rem;font-weight:600;padding:7px 11px;border-radius:30px;cursor:pointer;white-space:nowrap}
+.reset-btn:hover{background:rgba(200,53,43,.1);color:var(--red)}
+nav{display:flex;gap:5px;margin:13px 0;background:rgba(255,255,255,.5);padding:5px;border-radius:15px;border:1px solid var(--line);backdrop-filter:blur(6px)}
+nav button{flex:1;border:none;background:none;font-family:var(--f-ui);font-weight:600;font-size:.68rem;color:var(--ink);padding:9px 2px;border-radius:10px;cursor:pointer;transition:.2s;opacity:.46}
+nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5px 12px rgba(0,0,0,.16)}
+.panel{display:none;animation:fade .3s ease}.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+
+/* SHARED */
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.cat{background:rgba(255,255,255,.62);border:1px solid var(--line);border-radius:16px;padding:15px;cursor:pointer;transition:.22s;position:relative;overflow:hidden}
+.cat:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:0 10px 20px rgba(0,0,0,.09)}
+.cat .zh{font-family:var(--f-zh-sm);font-size:1.5rem;color:var(--red);font-weight:700}
+.cat .tr{font-weight:600;margin-top:3px;font-size:.85rem}
+.cat .ct{font-size:.66rem;opacity:.4;margin-top:2px}
+.cat .bar{position:absolute;bottom:0;left:0;height:3px;background:var(--jade);border-radius:2px;transition:.6s}
+.back-btn{background:none;border:1px solid var(--line);padding:7px 15px;border-radius:30px;font-family:var(--f-ui);font-weight:600;font-size:.74rem;cursor:pointer;margin-bottom:13px;color:var(--ink)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 5px 0 var(--red-d);border:none;border-radius:14px;font-family:var(--f-ui);font-weight:700;cursor:pointer}
+.btn-red:active{transform:translateY(4px);box-shadow:none}
+.btn-grey{background:rgba(0,0,0,.07);color:var(--ink);border:none;border-radius:14px;font-family:var(--f-ui);font-weight:700;cursor:pointer}
+
+/* VOCAB */
+.mode-row{display:flex;gap:7px;margin-bottom:11px}
+.mode-row button{flex:1;border:2px solid var(--line);background:rgba(255,255,255,.5);border-radius:11px;font-family:var(--f-ui);font-weight:700;font-size:.78rem;padding:8px;cursor:pointer;color:var(--ink);opacity:.52;transition:.2s}
+.mode-row button.on{background:var(--ink);color:var(--paper);border-color:var(--ink);opacity:1}
+.wcard{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:22px;padding:26px 20px;text-align:center;box-shadow:0 12px 28px rgba(0,0,0,.08)}
+.w-han{font-family:var(--f-zh);font-weight:900;font-size:4.6rem;line-height:1.05;color:var(--ink);margin:6px 0;text-shadow:1px 2px 0 rgba(0,0,0,.06)}
+.w-pin{font-family:var(--f-pin);font-size:1.55rem;font-weight:600;color:var(--red);letter-spacing:.5px;margin-bottom:10px}
+.w-tr{font-size:1.1rem;font-weight:700;letter-spacing:.1px;color:var(--ink)}
+.w-en{font-size:.86rem;opacity:.46;font-style:italic;margin-top:3px}
+.w-status{font-size:.7rem;font-weight:700;margin-top:9px;min-height:15px}
+.st-ok{color:var(--ok)}.st-bad{color:var(--red)}
+.w-prog{font-size:.68rem;opacity:.36;margin-top:14px;letter-spacing:1px}
+.nav-row{display:flex;gap:9px;margin-top:13px}
+.nav-row button{flex:1;padding:13px;font-size:.86rem}
+.sound-btn{background:var(--red);border:none;border-radius:50px;width:auto;padding:8px 16px;height:38px;font-size:.82rem;font-family:var(--f-ui);font-weight:700;color:#fff;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:6px;box-shadow:0 3px 0 var(--red-d);letter-spacing:.3px}
+.sound-btn:hover{background:var(--red-d);transform:translateY(-1px)}
+.sound-btn:active{transform:translateY(2px);box-shadow:none}
+.sound-btn.playing{background:var(--jade);box-shadow:0 3px 0 #2a6054;animation:pulse .5s ease infinite alternate}
+.s-sound{background:var(--red);border:none;border-radius:20px;padding:4px 10px;font-size:.78rem;color:#fff;cursor:pointer;font-family:var(--f-ui);font-weight:700;vertical-align:middle;margin-left:6px;box-shadow:0 2px 0 var(--red-d)}
+.s-sound:hover{background:var(--red-d)}
+@keyframes pulse{from{transform:scale(1)}to{transform:scale(1.1)}}
+
+/* QUIZ */
+.q-setup-lbl{font-family:'Noto Serif SC';font-size:.96rem;color:var(--red);margin-bottom:9px;display:block}
+.qcats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:11px}
+.qcat{background:rgba(255,255,255,.62);border:2px solid var(--line);border-radius:13px;padding:12px;cursor:pointer;transition:.2s;font-family:var(--f-ui);font-weight:600;font-size:.8rem;text-align:center}
+.qcat:hover{border-color:rgba(200,53,43,.4)}
+.qcat.picked{border-color:var(--red);background:rgba(200,53,43,.07);color:var(--red)}
+.qcat .qz{font-family:var(--f-zh-sm);font-size:1.3rem;display:block;margin-bottom:2px;color:inherit}
+.quiz-type-row{display:flex;gap:7px;margin-bottom:11px}
+.quiz-type-row button{flex:1;border:2px solid var(--line);background:rgba(255,255,255,.5);border-radius:11px;font-family:var(--f-ui);font-weight:700;font-size:.76rem;padding:9px 6px;cursor:pointer;color:var(--ink);opacity:.52;transition:.2s}
+.quiz-type-row button.on{background:var(--ink);color:var(--paper);border-color:var(--ink);opacity:1}
+.start-btn{width:100%;border:none;background:var(--red);color:#fff;font-family:var(--f-ui);font-weight:700;font-size:.91rem;padding:14px;border-radius:13px;cursor:pointer;box-shadow:0 5px 0 var(--red-d)}
+.start-btn:disabled{opacity:.35;pointer-events:none}
+.start-btn:active{transform:translateY(4px);box-shadow:none}
+.qcard{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:22px;padding:24px 18px;text-align:center;box-shadow:0 12px 28px rgba(0,0,0,.08);margin-bottom:11px}
+.q-han{font-family:var(--f-zh);font-size:4.6rem;font-weight:900;line-height:1.05;text-shadow:1px 2px 0 rgba(0,0,0,.06)}
+.q-pin{font-family:var(--f-pin);font-size:1.4rem;font-weight:600;color:var(--red);letter-spacing:.5px;margin:6px 0 0}
+.q-meta{font-size:.68rem;opacity:.38;margin-top:9px}
+.q-streak{font-size:.76rem;font-weight:700;color:var(--gold);margin-top:5px;min-height:17px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.choice{border:2px solid var(--line);background:rgba(255,255,255,.65);border-radius:13px;padding:14px 9px;font-family:var(--f-ui);font-weight:700;font-size:.86rem;cursor:pointer;transition:.18s;text-align:center;line-height:1.3}
+.choice:hover{border-color:rgba(200,53,43,.45);background:rgba(200,53,43,.05)}
+.choice.correct{border-color:var(--ok);background:rgba(45,138,94,.13);color:var(--ok);animation:pop .26s ease}
+.choice.wrong{border-color:var(--red);background:rgba(200,53,43,.08);color:var(--red)}
+.choice.disabled{pointer-events:none}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+/* Pinyin quiz */
+.pin-quiz-box{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:22px;padding:24px 20px;box-shadow:0 12px 28px rgba(0,0,0,.08);margin-bottom:11px}
+.pin-input-row{display:flex;gap:8px;margin-top:14px}
+.pin-input{flex:1;border:2px solid var(--line);background:rgba(255,255,255,.8);border-radius:12px;padding:12px 14px;font-family:var(--f-ui);font-size:1rem;font-weight:700;outline:none;transition:.2s;color:var(--ink)}
+.pin-input:focus{border-color:var(--red)}
+.pin-input.ok{border-color:var(--ok);background:rgba(45,138,94,.08)}
+.pin-input.err{border-color:var(--red);background:rgba(200,53,43,.06)}
+.pin-hint{font-size:.76rem;opacity:.45;margin-top:6px;min-height:16px;font-style:italic}
+.pin-check-btn{border:none;background:var(--red);color:#fff;font-family:var(--f-ui);font-weight:700;font-size:.86rem;padding:12px 18px;border-radius:12px;cursor:pointer;white-space:nowrap}
+.skip-link{background:none;border:none;font-family:var(--f-ui);font-size:.73rem;opacity:.38;cursor:pointer;color:var(--ink);display:block;margin:8px auto 0;padding:3px}
+.q-result{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:22px;padding:28px 20px;text-align:center;box-shadow:0 12px 28px rgba(0,0,0,.08)}
+.r-han{font-family:'Noto Serif SC';font-size:3rem;font-weight:900;margin-bottom:5px}
+.r-score{font-family:'Noto Serif SC';font-size:2.3rem;font-weight:900;margin:9px 0 3px}
+.r-ok{color:var(--ok)}.r-mid{color:var(--gold)}.r-bad{color:var(--red)}
+.r-lbl{font-size:.83rem;opacity:.52;margin-bottom:16px}
+.r-btns{display:flex;gap:9px;justify-content:center}
+.r-btns button{border:none;font-family:var(--f-ui);font-weight:700;font-size:.83rem;padding:11px 20px;border-radius:12px;cursor:pointer}
+
+/* WRITING */
+.writ-intro{background:rgba(255,255,255,.62);border:1px solid var(--line);border-radius:15px;padding:14px 16px;margin-bottom:12px;font-size:.83rem;line-height:1.6;opacity:.8}
+.writ-intro strong{color:var(--red)}
+.writ-card{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:22px;padding:22px 20px;text-align:center;box-shadow:0 12px 28px rgba(0,0,0,.08);margin-bottom:11px}
+.writ-word{font-family:var(--f-zh-sm);font-size:1.15rem;font-weight:700;margin-bottom:4px;color:var(--red)}
+.writ-pin{font-family:var(--f-pin);font-size:1rem;font-weight:600;color:var(--red);opacity:.85;letter-spacing:.5px;margin-bottom:10px}
+.writ-tr{font-size:.86rem;font-weight:600;margin-bottom:14px;opacity:.7}
+#hanziTarget{display:flex;justify-content:center;margin:0 auto}
+#hanziTarget svg{border-radius:12px;border:1.5px solid var(--line);background:rgba(255,255,255,.9)}
+.writ-btns{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+.writ-btns button{flex:1;border:none;border-radius:12px;padding:12px;font-family:var(--f-ui);font-weight:700;font-size:.82rem;cursor:pointer;min-width:100px}
+.writ-quiz-info{font-size:.76rem;margin-top:10px;min-height:18px;font-weight:600;text-align:center}
+.writ-quiz-info.ok{color:var(--ok)}.writ-quiz-info.err{color:var(--red)}
+.stroke-progress{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.stroke-dot{width:10px;height:10px;border-radius:50%;background:var(--line);transition:.3s}
+.stroke-dot.done{background:var(--ok)}
+.writ-nav{display:flex;gap:8px;margin-top:11px}
+.writ-nav button{flex:1;padding:12px;font-size:.85rem}
+
+/* SENTENCES */
+.sent{background:rgba(255,255,255,.62);border:1px solid var(--line);border-left:4px solid var(--jade);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.s-zh{font-family:var(--f-zh);font-size:1.28rem;font-weight:700;line-height:1.4}
+.s-pin{font-family:var(--f-pin);font-size:.9rem;font-weight:500;color:var(--red);letter-spacing:.3px;margin:4px 0}
+.s-tr{font-weight:600;font-size:.86rem}
+.s-en{font-size:.74rem;opacity:.43;font-style:italic}
+
+
+/* GRAMMAR */
+.gram-section{font-family:var(--f-ui);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;opacity:.42;margin:16px 0 8px;padding:0 2px}
+.gcard{background:rgba(255,255,255,.68);border:1px solid var(--line);border-radius:16px;margin-bottom:9px;overflow:hidden;transition:.2s;cursor:pointer}
+.gcard:hover{border-color:rgba(200,53,43,.3);box-shadow:0 6px 18px rgba(0,0,0,.07)}
+.gcard-head{display:flex;align-items:center;gap:10px;padding:14px 16px}
+.gcard-icon{font-size:1.35rem;flex-shrink:0;width:36px;text-align:center}
+.gcard-info{flex:1;min-width:0}
+.gcard-title{font-weight:700;font-size:.92rem;line-height:1.3}
+.gcard-sub{font-size:.75rem;opacity:.52;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gcard-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.gbadge{font-size:.62rem;font-weight:800;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.gb-easy{background:#d4f0e0;color:#1a6b3e}
+.gb-mid{background:#fff0cc;color:#7a5500}
+.gb-hard{background:#fde0de;color:#8b1a14}
+.gb-key{background:#e8e0ff;color:#3d1a8b}
+.gcard-arrow{font-size:.85rem;opacity:.35;transition:.3s;font-weight:800}
+.gcard.open .gcard-arrow{transform:rotate(90deg);opacity:.7}
+.gcard-body{display:none;padding:0 16px 16px;border-top:1px solid var(--line)}
+.gcard.open .gcard-body{display:block;animation:fade .25s ease}
+.gcard-desc{font-size:.86rem;line-height:1.7;opacity:.85;margin:12px 0 10px}
+.gcard-desc strong{color:var(--red)}
+.gcard-examples{display:flex;flex-direction:column;gap:7px}
+.gex{background:rgba(63,126,110,.08);border-left:3px solid var(--jade);border-radius:0 10px 10px 0;padding:9px 12px}
+.gex .gex-zh{font-family:var(--f-zh-sm);font-size:1.05rem;font-weight:700;color:var(--ink)}
+.gex .gex-pin{font-family:var(--f-pin);font-size:.82rem;color:var(--red);font-weight:500;letter-spacing:.3px;margin:2px 0}
+.gex .gex-tr{font-size:.82rem;font-weight:600}
+.gex .gex-note{font-size:.74rem;opacity:.5;font-style:italic;margin-top:2px}
+.gpuf{background:rgba(214,164,76,.12);border:1px solid rgba(214,164,76,.35);border-radius:10px;padding:8px 12px;margin-top:10px;font-size:.8rem;line-height:1.6}
+.gpuf::before{content:"💡 Püf: ";font-weight:700;color:#7a5500}
+</style>
+</head>
+<body>
+<div class="lantern l1"></div><div class="lantern l2"></div>
+<div class="wrap">
+  <header>
+    <div class="seal">汉语</div>
+    <h1>Sıfırdan Çince</h1>
+    <div class="sub">Türkçe → 中文 &nbsp;·&nbsp; Pinyin + Ses + Yazma Alıştırması</div>
+  </header>
+
+  <div class="statsbar">
+    <div class="stat s-tot"><div class="num" id="sTot">0</div><div class="lbl">Görülen</div></div>
+    <div class="stat s-ok"><div class="num" id="sOk">0</div><div class="lbl">Doğru</div></div>
+    <div class="stat s-err"><div class="num" id="sErr">0</div><div class="lbl">Yanlış</div></div>
+    <div class="stat"><div class="num" id="sStr">0</div><div class="lbl">🔥 Seri</div></div>
+    <button class="reset-btn" id="resetBtn">↺ Sıfırla</button>
+  </div>
+
+  <nav>
+    <button class="on" data-p="vocab">📖 Kelime</button>
+    <button data-p="quiz">🎯 Test</button>
+    <button data-p="write">✍️ Yaz</button>
+    <button data-p="sent">💬 Cümle</button>
+    <button data-p="gram">📘 Gramer</button>
+  </nav>
+
+  <!-- VOCAB -->
+  <div id="vocab" class="panel on">
+    <div id="catList" class="cats"></div>
+    <div id="study" style="display:none">
+      <button class="back-btn" id="backVocab">← Kategoriler</button>
+      <div class="mode-row">
+        <button class="on" id="modeTr">Türkçe</button>
+        <button id="modeEn">+ İngilizce</button>
+      </div>
+      <div class="wcard">
+        <div class="w-han" id="cHan"></div>
+        <div class="w-pin" id="cPin"></div>
+        <button class="sound-btn" id="soundBtn" style="margin:12px auto 0">🔊 Telaffuzu Dinle</button>
+        <div class="w-tr" id="cTr"></div>
+        <div class="w-en" id="cEn"></div>
+        <div class="w-status" id="cStat"></div>
+        <div class="w-prog" id="cProg"></div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-grey" id="prevBtn" style="padding:13px;font-size:.86rem">← Önceki</button>
+        <button class="btn-red" id="nextBtn" style="padding:13px;font-size:.86rem">Sonraki →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="panel">
+    <div id="qSetup">
+      <span class="q-setup-lbl">Test türü</span>
+      <div class="quiz-type-row">
+        <button class="on" id="qt-mc" onclick="setQType('mc')">🔤 Çoktan Seçmeli<br><small style="font-weight:400;opacity:.6">Türkçe anlamı bul</small></button>
+        <button id="qt-pin" onclick="setQType('pin')">✏️ Pinyin Yaz<br><small style="font-weight:400;opacity:.6">Pinyin'i doğru yaz</small></button>
+      </div>
+      <span class="q-setup-lbl" style="margin-top:8px">Kategori seç</span>
+      <div class="qcats" id="qCatList"></div>
+      <button class="start-btn" id="startBtn" disabled>Testi Başlat →</button>
+    </div>
+    <div id="qBox" style="display:none"></div>
+  </div>
+
+  <!-- WRITE -->
+  <div id="write" class="panel">
+    <div id="writeCatList" class="cats"></div>
+    <div id="writeStudy" style="display:none">
+      <button class="back-btn" id="backWrite">← Kategoriler</button>
+      <div class="writ-intro">
+        <strong>Yazma Alıştırması:</strong> Önce <strong>Animasyonu İzle</strong> ile kalem sırasını öğren, sonra <strong>Çizim Modu</strong>'nda kendin çiz. Her yanlış çizgi kırmızı titrer, doğrularda yeşile döner!
+      </div>
+      <div class="writ-card">
+        <div class="writ-word" id="wHan"></div>
+        <div class="writ-pin" id="wPin"></div>
+        <div class="writ-tr" id="wTr"></div>
+        <div id="hanziTarget"></div>
+        <div class="stroke-progress" id="strokeDots"></div>
+        <div class="writ-quiz-info" id="writInfo"></div>
+        <div class="writ-btns">
+          <button class="btn-grey" id="animBtn" style="padding:12px;font-size:.82rem">▶ Animasyonu İzle</button>
+          <button class="btn-red" id="quizWriteBtn" style="padding:12px;font-size:.82rem">✏️ Çizim Modu</button>
+          <button class="sound-btn" id="writeSoundBtn" style="flex:none">🔊 Dinle</button>
+        </div>
+      </div>
+      <div class="writ-nav">
+        <button class="btn-grey" id="wPrevBtn" style="padding:12px;font-size:.85rem">← Önceki</button>
+        <button class="btn-red" id="wNextBtn" style="padding:12px;font-size:.85rem">Sonraki →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SENTENCES -->
+  <div id="sent" class="panel"></div>
+
+  <!-- GRAMMAR -->
+  <div id="gram" class="panel"></div>
+</div>
+
+<script>
+/* ════ DATA ════ */
+const DATA={
+"Zamirler 代词":[["我","wǒ","ben, beni","I, me"],["你","nǐ","sen","you"],["您","nín","siz (resmi)","you (formal)"],["他","tā","o (erkek)","he, him"],["她","tā","o (kadın)","she, her"],["我们","wǒmen","biz","we, us"],["你们","nǐmen","sizler","you (plural)"],["他们","tāmen","onlar","they, them"],["它","tā","o (cansız)","it"],["这","zhè","bu","this"],["那","nà","şu, o","that"],["这些","zhèxiē","bunlar","these"],["那些","nàxiē","şunlar","those"],["自己","zìjǐ","kendi","oneself"],["大家","dàjiā","herkes","everyone"]],
+"Hitaplar 称呼":[["先生","xiānshēng","bey, efendi","mr., sir"],["小姐","xiǎojiě","hanım (genç)","miss"],["太太","tàitai","hanımefendi","madame"],["老师","lǎoshī","öğretmen","teacher"],["医生","yīshēng","doktor","doctor"]],
+"Soru Kelimeleri 疑问词":[["什么","shénme","ne","what"],["几","jǐ","kaç","how many"],["谁","shéi","kim","who"],["什么时候","shénme shíhòu","ne zaman","when"],["哪里","nǎlǐ","nerede","where"],["为什么","wèishénme","neden","why"],["怎么","zěnme","nasıl","how"],["怎么样","zěnme yàng","nasıl olur","how about"]],
+"Önemli Kelimeler 常用词":[["不","bù","değil","not"],["了","le","değişim eki","change marker"],["很","hěn","çok","very"],["的","de","-in (iyelik)","of"],["还","hái","hâlâ, ayrıca","still, also"],["为","wéi","için","for"],["又","yòu","yine","again"],["从","cóng","-den beri","from, since"],["再","zài","tekrar","once more"],["这样","zhèyàng","böyle","like this"],["可能","kěnéng","belki","maybe"],["对","duì","doğru","correct"]],
+"Zaman 时间":[["天","tiān","gün","day"],["星期","xīngqí","hafta","week"],["月","yuè","ay","month"],["年","nián","yıl","year"],["今天","jīntiān","bugün","today"],["昨天","zuótiān","dün","yesterday"],["明天","míngtiān","yarın","tomorrow"],["小时","xiǎoshí","saat (süre)","hour"],["分钟","fēnzhōng","dakika","minute"],["时间","shíjiān","zaman","time"],["以前","yǐqián","önce","before"],["以后","yǐhòu","sonra","after"],["现在","xiànzài","şimdi","now"],["次","cì","kez, defa","occasion"]],
+"Yerler 地点":[["这里","zhèlǐ","burası","here"],["那里","nàlǐ","orası","there"],["地方","dìfāng","yer","place"],["学校","xuéxiào","okul","school"],["店","diàn","dükkân","shop"],["工作","gōngzuò","iş; çalışmak","work"],["洗手间","xǐshǒujiān","tuvalet","bathroom"],["城市","chéngshì","şehir","city"],["国家","guójiā","ülke","country"],["中国","Zhōngguó","Çin","China"],["公司","gōngsī","şirket","company"]],
+"Eşyalar 东西":[["东西","dōngxi","şey, eşya","thing"],["事","shì","mesele","matter"],["家","jiā","ev","home"],["车","chē","araba","car"],["问题","wèntí","soru, sorun","problem"]],
+"İnsanlar 人":[["女人","nǚrén","kadın","woman"],["男人","nánrén","erkek","man"],["孩子","háizi","çocuk","child"],["朋友","péngyǒu","arkadaş","friend"],["人","rén","kişi","person"],["家人","jiārén","aile","family"],["名字","míngzi","isim","name"],["学生","xuésheng","öğrenci","student"]],
+"Fiiller 动词":[["在","zài","-de bulunmak","located"],["有","yǒu","sahip olmak","to have"],["说","shuō","konuşmak","to speak"],["要","yào","istemek","to want"],["会","huì","yapabilmek","know how to"],["及","jí","yetişmek","to reach"],["能","néng","-ebilmek","be able to"],["可以","kěyǐ","-abilir","can"],["来","lái","gelmek","to come"],["等","děng","beklemek","to wait"],["让","ràng","izin vermek","to allow"],["做","zuò","yapmak","to do"],["想","xiǎng","istemek, özlemek","to wish"],["去","qù","gitmek","to go"],["表示","biǎoshì","göstermek","to show"],["看","kàn","bakmak, izlemek","to see"],["觉得","juéde","düşünmek","to think"],["使用","shǐyòng","kullanmak","to use"],["知道","zhīdào","bilmek","to know"],["没有","méiyǒu","yok, -madı","not have"]],
+"Sıfat & Zarf 形容词":[["都","dōu","hepsi","all"],["大","dà","büyük","big"],["最","zuì","en","most"],["好","hǎo","iyi","good"],["更","gèng","daha da","even more"],["每","měi","her","every"],["只","zhǐ","sadece","only"],["小","xiǎo","küçük","small"],["新","xīn","yeni","new"],["已经","yǐjīng","zaten","already"],["高","gāo","uzun, yüksek","tall"]],
+"Edatlar 介词":[["上","shàng","üstünde","on, above"],["中","zhōng","ortada","center"],["里","lǐ","içinde","inside"],["下","xià","altında","under"]],
+"Bağlaçlar 连词":[["和","hé","ve","and"],["就","jiù","o zaman","then"],["但是","dànshì","ama, fakat","but"],["或","huò","veya","or"],["因为","yīnwèi","çünkü","because"],["所以","suǒyǐ","bu yüzden","so"],["如果","rúguǒ","eğer","if"],["跟","gēn","ile","with"]]
+};
+const SENT=[
+["我是学生","wǒ shì xuésheng","Ben öğrenciyim","I am a student"],
+["你是中国人吗?","nǐ shì Zhōngguó rén ma?","Sen Çinli misin?","Are you Chinese?"],
+["这是我的朋友","zhè shì wǒ de péngyǒu","Bu benim arkadaşım","This is my friend"],
+["我要去学校","wǒ yào qù xuéxiào","Okula gitmek istiyorum","I want to go to school"],
+["他不在家","tā bú zài jiā","O evde değil","He is not at home"],
+["你叫什么名字?","nǐ jiào shénme míngzi?","Adın ne?","What is your name?"],
+["我没有时间","wǒ méiyǒu shíjiān","Zamanım yok","I have no time"],
+["今天天气很好","jīntiān tiānqì hěn hǎo","Bugün hava çok güzel","The weather is nice today"],
+["因为我很忙所以不能去","yīnwèi wǒ hěn máng suǒyǐ bù néng qù","Çok meşgul olduğum için gidemem","Because I'm busy I can't go"],
+["你想喝什么?","nǐ xiǎng hē shénme?","Ne içmek istersin?","What do you want to drink?"],
+["我的朋友很好","wǒ de péngyǒu hěn hǎo","Arkadaşım çok iyi","My friend is very good"],
+["你去哪里?","nǐ qù nǎlǐ?","Nereye gidiyorsun?","Where are you going?"]
+];
+const GRAM=[
+// ── TEMEL ──
+{sec:"🏗 Temel Yapı"},
+{icon:"🔤",title:"Cümle Sırası: SVO",badge:"easy",sub:"Özne + Fiil + Nesne — Türkçenin tersi",
+ desc:"Çince <strong>SVO</strong> (Özne–Fiil–Nesne) dilidir; Türkçe SOV'dur. 'Ben elma yerim' Çincede 'Ben yerim elma' olur. Zaman, yer ve sıklık ifadeleri genellikle fiilin önüne gelir.",
+ exs:[["我吃苹果","wǒ chī píngguǒ","Ben elma yerim",""],["他每天学习中文","tā měitiān xuéxí zhōngwén","O her gün Çince çalışıyor","Zaman (每天) fiilin önünde"]]},
+{icon:"🟰",title:"是 shì — 'olmak'",badge:"easy",sub:"İsim = İsim; sıfatla kullanılmaz",
+ desc:"<strong>是 shì</strong> iki isim veya zamir arasında köprü kurar. Sıfat cümlelerinde KULLANILMAZ — orada doğrudan 'çok (很 hěn)' gelir; hěn yoksa vurgu/karşıtlık anlamı çıkar.",
+ exs:[["我是学生","wǒ shì xuésheng","Ben öğrenciyim",""],["她很漂亮","tā hěn piàoliang","O çok güzel","❌ 她是漂亮 YANLIŞ"],["今天不是星期一","jīntiān bú shì xīngqīyī","Bugün Pazartesi değil",""]]},
+{icon:"❓",title:"吗 ma — soru eki",badge:"easy",sub:"Cümle sonuna ekle, soru biter",
+ desc:"Kelime sırası hiç değişmez. Düz cümlenin sonuna <strong>吗</strong> eklemek yeterli. 'Evet/Hayır' soruları için en kolay yöntem.",
+ exs:[["你是中国人吗?","nǐ shì Zhōngguó rén ma?","Sen Çinli misin?",""],["你吃了吗?","nǐ chī le ma?","Yedin mi?","了 ile birlikte de kullanılır"]],
+ puf:"Soru kelimesi olan cümlelerde (什么, 哪里...) 吗 KULLANILMAZ."},
+{icon:"🚫",title:"不 bù / 没 méi — olumsuzluk",badge:"easy",sub:"Geniş/gelecek→不, geçmiş/yok→没",
+ desc:"<strong>不 bù:</strong> Genel olumsuzluk, geniş zaman, gelecek, istek. <strong>没 méi:</strong> Geçmişte olmadı; 有 (yǒu/sahip olmak) ile birlikte 没有 = yok. Ton değişimi: 不 4. ton, ama 4. tondan önce bú olur.",
+ exs:[["我不去","wǒ bù qù","Gitmiyorum (istemiyorum)",""],["我没去","wǒ méi qù","Gitmedim","geçmiş"],["我没有时间","wǒ méiyǒu shíjiān","Zamanım yok",""]],
+ puf:"是 → 不是 | 有 → 没有. Hiçbir zaman '不有' YAZMA."},
+// ── ZAMANLAR ──
+{sec:"⏱ Zaman İfadeleri"},
+{icon:"✅",title:"了 le — tamamlandı",badge:"mid",sub:"Eylem bitti veya durum değişti",
+ desc:"Çincede fiil çekimi yoktur! <strong>了 le</strong> fiilin hemen ardından: eylem tamamlandı. Cümle sonunda 了: durum değişti. İkisi bir arada da olabilir.",
+ exs:[["我吃了饭","wǒ chī le fàn","Yemeği yedim","fiil + 了"],["天黑了","tiān hēi le","Hava karardı","durum değişti"],["我去了北京","wǒ qù le Běijīng","Pekin'e gittim",""]]},
+{icon:"🔄",title:"过 guò — deneyim geçmişi",badge:"mid",sub:"'Hayatımda bir kez...' geçmişi",
+ desc:"<strong>过 guò</strong> fiilin ardından: hayatında en az bir kez o deneyimi yaşadın. Olumsuzluğu 没 ile. 了 ile KULLANILMAZ.",
+ exs:[["我去过中国","wǒ qù guò Zhōngguó","Çin'e gittim (daha önce)","hayat deneyimi"],["你吃过北京烤鸭吗?","nǐ chī guò Běijīng kǎoyā ma?","Pekin ördeği yedin mi hiç?",""],["我没去过","wǒ méi qù guò","Hiç gitmedim",""]]},
+{icon:"▶️",title:"在/正在 — şu an oluyor",badge:"mid",sub:"Türkçe '-iyor' eki gibi",
+ desc:"<strong>在 zài</strong> veya <strong>正在 zhèngzài</strong> fiilin önüne gelir. Cümle sonunda <strong>呢 ne</strong> eklenirse süregelen vurgusu artar. 了 ile KULLANILMAZ.",
+ exs:[["我在吃饭","wǒ zài chī fàn","Yemek yiyorum",""],["她正在看书呢","tā zhèngzài kàn shū ne","O kitap okuyor (tam şu an)",""],["他们在开会","tāmen zài kāihuì","Toplantıdalar",""]]},
+{icon:"🔮",title:"要/会/打算 — gelecek",badge:"mid",sub:"Üç farklı gelecek ifadesi",
+ desc:"<strong>要 yào:</strong> Yakın gelecek, niyet. <strong>会 huì:</strong> Doğal olacak / olması beklenen (tahmin ya da yeteneğe dayalı gelecek). <strong>打算 dǎsuàn:</strong> Planlıyorum. Bağlam zaman belirteci içeriyorsa fiil de yeterli.",
+ exs:[["我明天要去北京","wǒ míngtiān yào qù Běijīng","Yarın Pekin'e gideceğim","niyet"],["明天会下雨","míngtiān huì xià yǔ","Yarın yağmur yağacak","tahmin"],["我打算学日语","wǒ dǎsuàn xué Rìyǔ","Japonce öğrenmeyi planlıyorum",""]]},
+// ── YAPIYLAR ──
+{sec:"🔧 Temel Yapılar"},
+{icon:"📦",title:"的 de — iyelik ve sıfat eki",badge:"easy",sub:"Benim / güzel bir kız",
+ desc:"<strong>的 de</strong> iki işlev: (1) İyelik: A的B = A'nın B'si. (2) Sıfat veya cümle + 的 + isim. Yakın ilişkide (aile, arkadaş) 的 atlanabilir.",
+ exs:[["我的书","wǒ de shū","Benim kitabım",""],["漂亮的女人","piàoliang de nǚrén","Güzel bir kadın","sıfat + 的"],["我妈妈","wǒ māma","Annem","aile → 的 atlanır"]]},
+{icon:"🧮",title:"Ölçü kelimeleri 量词",badge:"mid",sub:"Sayı + 量词 + İsim — zorunlu!",
+ desc:"Türkçede 'üç elma' dersin; Çincede araya ölçü kelimesi girmek ZORUNLU. Her nesne kategorisinin kendine has ölçü kelimesi var. Bilmiyorsan <strong>个 gè</strong> çoğu zaman işe yarar.",
+ exs:[["三个朋友","sān gè péngyǒu","Üç arkadaş","个 — genel"],["一本书","yī běn shū","Bir kitap","本 — ciltli şeyler"],["两杯茶","liǎng bēi chá","İki bardak çay","杯 — bardak"]],
+ puf:"İki sayısı için 'èr' değil 'liǎng' kullan: 两个人 (iki kişi)."},
+{icon:"🏠",title:"Konum: 上下左右里外前后",badge:"mid",sub:"Türkçe 'de/da' yerine konum eki",
+ desc:"Çincede konum için ismin ardına yön kelimesi gelir: <strong>在 zài + isim + 里/上/下...</strong> Türkçedeki '-de/-da' gibi ama kelimenin sonu değil, ayrı kelime.",
+ exs:[["书在桌子上","shū zài zhuōzi shàng","Kitap masanın üstünde",""],["猫在箱子里","māo zài xiāngzi lǐ","Kedi kutunun içinde",""],["学校在医院旁边","xuéxiào zài yīyuàn pángbiān","Okul hastanenin yanında",""]]},
+{icon:"⚖️",title:"比 bǐ — karşılaştırma",badge:"mid",sub:"A, B'den daha... demek için",
+ desc:"<strong>A 比 bǐ B + sıfat:</strong> A, B'den daha sıfat. Araya 更 gèng (daha da) gelebilir. Türkçedeki '-den daha' yapısı gibi ama sıra A比B+sıfat.",
+ exs:[["我比他高","wǒ bǐ tā gāo","Ben ondan daha uzunum",""],["今天比昨天冷","jīntiān bǐ zuótiān lěng","Bugün dünden daha soğuk",""],["这个比那个贵","zhège bǐ nàge guì","Bu şundan daha pahalı",""]]},
+{icon:"🔗",title:"因为...所以 — sebep-sonuç",badge:"mid",sub:"Çünkü... bu yüzden...",
+ desc:"Türkçenin tersine, Çincede hem <strong>因为 yīnwèi</strong> hem de <strong>所以 suǒyǐ</strong> kullanılır (ikisi birden). Birini atlamak mümkün ama ikisi birden daha doğal.",
+ exs:[["因为下雨,所以我没去","yīnwèi xià yǔ suǒyǐ wǒ méi qù","Yağmur yağdığı için gitmedim",""],["因为我很忙,所以不能来","yīnwèi wǒ hěn máng suǒyǐ bù néng lái","Çok meşgul olduğum için gelemem",""]]},
+{icon:"🎯",title:"如果...就 — koşul cümlesi",badge:"mid",sub:"Eğer... o zaman...",
+ desc:"<strong>如果 rúguǒ</strong> + koşul + <strong>就 jiù</strong> + sonuç. 就 tek başına 'o zaman, hemen' anlamı da taşır. Koşulsuz kullanımda da sıkça rastlanır.",
+ exs:[["如果你来,就好了","rúguǒ nǐ lái jiù hǎo le","Gelirsen iyi olur",""],["如果下雨,我就不去","rúguǒ xià yǔ wǒ jiù bù qù","Yağmur yağarsa gitmem",""]]},
+// ── TONLAR & PINYIN ──
+{sec:"🎵 Tonlar & Pinyin"},
+{icon:"🎶",title:"Dört Ton",badge:"key",sub:"mā má mǎ mà — ton anlamı değiştirir",
+ desc:"Mandarin'de her hece 4 tondan birini taşır. Yanlış ton = farklı kelime. <strong>1. ton ⌐</strong> düz yüksek | <strong>2. ton /</strong> yükselen | <strong>3. ton v</strong> alçalıp yükselen | <strong>4. ton \\</strong> hızlı düşen",
+ exs:[["māmámǎmà","mā-má-mǎ-mà","anne / kenevir / at / azarlamak","aynı hece, 4 farklı anlam"],["买/卖","mǎi / mài","satın almak / satmak","3. ve 4. ton farkı"]],
+ puf:"3. ton, 3. tondan önce 2. tona döner: 你好 nǐ hǎo → níhǎo."},
+{icon:"🔕",title:"Nötr Ton",badge:"mid",sub:"Hafif, hızlı, işaretsiz ton",
+ desc:"Bazı heceler vurgusuz/hafif sesletilir ve pinyin'de <strong>ton işareti yazılmaz</strong>: 吗 ma, 的 de, 了 le, 呢 ne... Ayrıca bazı kelimelerin son hecesi nötrleşir.",
+ exs:[["东西","dōngxi","şey, eşya","xi nötr"],["名字","míngzi","isim","zi nötr"],["学生","xuésheng","öğrenci","sheng nötr"]]},
+{icon:"🔄",title:"Ton Değişimi (变调)",badge:"hard",sub:"İki 3. ton yan yana → 2. + 3.",
+ desc:"Kurallar: (1) 3. ton + 3. ton → <strong>2. ton + 3. ton</strong>. (2) <strong>不 bù</strong>, 4. ton önünde <strong>bú</strong> olur. (3) <strong>一 yī</strong>: 4. ton önünde <strong>yí</strong> (2.ton); 1./2./3. ton önünde <strong>yì</strong> (4.ton); tek başına veya sıra sayısında değişmez.",
+ exs:[["你好","nǐ hǎo → níhǎo","merhaba","3+3 → 2+3"],["不是","bù shì → bú shì","değil","4. ton önünde bú"],["一个","yī gè → yí gè","bir tane","4. ton önünde 2.tona (yí) döner"]],
+ puf:"Günlük konuşmada 你好'yu nǐhǎo değil níhǎo diye söylersin!"},
+];
+
+const ALL=Object.values(DATA).flat();
+
+/* ════ SPEECH ════ */
+function speak(text, btn){
+  if(!window.speechSynthesis){
+    if(btn) btn.textContent = '🔇 Ses yok';
+    return;
+  }
+  window.speechSynthesis.cancel();
+
+  function doSpeak(){
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN';
+    u.rate = 0.75;
+    u.pitch = 1;
+    // Try to find a Chinese voice; fall back to browser default with lang hint
+    const vList = window.speechSynthesis.getVoices();
+    const zhVoice = vList.find(v => /zh[-_]CN/i.test(v.lang))
+                 || vList.find(v => /zh/i.test(v.lang));
+    if(zhVoice) u.voice = zhVoice;
+    if(btn){
+      btn.classList.add('playing');
+      u.onend  = () => btn.classList.remove('playing');
+      u.onerror = () => btn.classList.remove('playing');
+    }
+    window.speechSynthesis.speak(u);
+  }
+
+  const loaded = window.speechSynthesis.getVoices();
+  if(loaded.length > 0){
+    doSpeak();
+  } else {
+    // Voices not ready yet — wait for event (Chrome async)
+    window.speechSynthesis.addEventListener('voiceschanged', doSpeak, {once:true});
+    // Safety timeout in case event never fires
+    setTimeout(doSpeak, 1000);
+  }
+}
+
+/* ════ PROGRESS ════ */
+function load(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch{return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+let PR=load('cn_pr',{}),gSeen=load('cn_seen',0),gOk=load('cn_ok',0),gErr=load('cn_err',0),gStr=load('cn_str',0);
+function persist(){save('cn_pr',PR);save('cn_seen',gSeen);save('cn_ok',gOk);save('cn_err',gErr);save('cn_str',gStr);}
+function recordSeen(h){if(!PR[h])PR[h]={seen:0,ok:0,err:0};if(!PR[h].seen)gSeen++;PR[h].seen++;persist();refreshStats();}
+function recordAnswer(h,ok){if(!PR[h])PR[h]={seen:0,ok:0,err:0};if(ok){PR[h].ok++;gOk++;gStr++;}else{PR[h].err++;gErr++;gStr=0;}persist();refreshStats();}
+function refreshStats(){
+  document.getElementById('sTot').textContent=gSeen;
+  document.getElementById('sOk').textContent=gOk;
+  document.getElementById('sErr').textContent=gErr;
+  document.getElementById('sStr').textContent=gStr;
+}
+function wordBadge(h){const p=PR[h];if(!p||!p.seen)return{l:'',c:''};const t=p.ok+p.err,a=t?p.ok/t:0;if(a>=.8&&p.seen>=3)return{l:'✓ Öğrenildi',c:'st-ok'};if(p.err>p.ok&&p.seen>=2)return{l:'⚠ Tekrar çalış',c:'st-bad'};return{l:'',c:''};}
+function catPct(k){const ws=DATA[k];let n=0;ws.forEach(w=>{const p=PR[w[0]];if(p&&p.ok>=2&&p.ok>=p.err)n++;});return Math.round(n/ws.length*100);}
+document.getElementById('resetBtn').onclick=()=>{
+  if(!confirm('Tüm ilerleme sıfırlansın mı?'))return;
+  PR={};gSeen=0;gOk=0;gErr=0;gStr=0;
+  ['cn_pr','cn_seen','cn_ok','cn_err','cn_str'].forEach(k=>localStorage.removeItem(k));
+  refreshStats();buildCats();buildWriteCats();
+};
+
+/* ════ VOCAB ════ */
+let vCat=null,vIdx=0,vMode='tr';
+function buildCats(){
+  const el=document.getElementById('catList');el.innerHTML='';
+  Object.keys(DATA).forEach(k=>{
+    const[tr,zh]=k.split(' ');const pct=catPct(k);
+    const d=document.createElement('div');d.className='cat';
+    d.innerHTML='<div class="zh">'+zh+'</div><div class="tr">'+tr+'</div><div class="ct">'+DATA[k].length+' kelime · %'+pct+'</div><div class="bar" style="width:'+pct+'%"></div>';
+    d.onclick=()=>openStudy(k);el.appendChild(d);
+  });
+}
+buildCats();
+function openStudy(k){vCat=k;vIdx=0;document.getElementById('catList').style.display='none';document.getElementById('study').style.display='block';renderCard();}
+document.getElementById('backVocab').onclick=()=>{document.getElementById('study').style.display='none';document.getElementById('catList').style.display='grid';buildCats();};
+document.getElementById('modeTr').onclick=()=>{vMode='tr';document.getElementById('modeTr').classList.add('on');document.getElementById('modeEn').classList.remove('on');renderCard();};
+document.getElementById('modeEn').onclick=()=>{vMode='en';document.getElementById('modeEn').classList.add('on');document.getElementById('modeTr').classList.remove('on');renderCard();};
+document.getElementById('prevBtn').onclick=()=>{vIdx=(vIdx-1+DATA[vCat].length)%DATA[vCat].length;renderCard();};
+document.getElementById('nextBtn').onclick=()=>{vIdx=(vIdx+1)%DATA[vCat].length;renderCard();};
+document.getElementById('soundBtn').onclick=function(){speak(DATA[vCat][vIdx][0],this);};
+function renderCard(){
+  const w=DATA[vCat][vIdx];recordSeen(w[0]);
+  document.getElementById('cHan').textContent=w[0];
+  document.getElementById('cPin').textContent=w[1];
+  document.getElementById('cTr').textContent=w[2];
+  const en=document.getElementById('cEn');en.textContent=w[3];en.style.display=vMode==='en'?'block':'none';
+  const b=wordBadge(w[0]),st=document.getElementById('cStat');st.textContent=b.l;st.className='w-status '+b.c;
+  document.getElementById('cProg').textContent=(vIdx+1)+' / '+DATA[vCat].length;
+}
+
+/* ════ QUIZ ════ */
+let qPicked=new Set(),qWords=[],qIdx=0,qOk=0,qErr=0,qStr=0,qType='mc';
+function setQType(t){
+  qType=t;
+  document.getElementById('qt-mc').classList.toggle('on',t==='mc');
+  document.getElementById('qt-pin').classList.toggle('on',t==='pin');
+}
+(function(){
+  const el=document.getElementById('qCatList');
+  Object.keys(DATA).forEach(k=>{
+    const[tr,zh]=k.split(' ');
+    const d=document.createElement('div');d.className='qcat';
+    d.innerHTML='<span class="qz">'+zh+'</span>'+tr;
+    d.onclick=()=>{d.classList.toggle('picked');qPicked.has(k)?qPicked.delete(k):qPicked.add(k);document.getElementById('startBtn').disabled=qPicked.size===0;};
+    el.appendChild(d);
+  });
+})();
+document.getElementById('startBtn').onclick=startQuiz;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function startQuiz(){qWords=[];qPicked.forEach(k=>qWords.push(...DATA[k]));qWords=shuffle(qWords);qIdx=0;qOk=0;qErr=0;qStr=0;document.getElementById('qSetup').style.display='none';document.getElementById('qBox').style.display='block';renderQ();}
+function getWrong(w){return shuffle(ALL.filter(x=>x[2]!==w[2])).slice(0,3);}
+
+function renderQ(){
+  const box=document.getElementById('qBox');
+  if(qIdx>=qWords.length){showResult();return;}
+  const w=qWords[qIdx];
+  const streak=qStr>=3?'🔥 '+qStr+' seri!':'';
+  const meta=(qIdx+1)+' / '+qWords.length+' &nbsp;·&nbsp; ✓'+qOk+' ✗'+qErr;
+  const header='<div class="qcard"><div class="q-han">'+w[0]+'</div><div class="q-pin">'+w[1]+'</div><div class="q-meta">'+meta+'</div><div class="q-streak">'+streak+'</div><button class="sound-btn" id="qSoundBtn" style="margin:12px auto 0">🔊 Telaffuzu Dinle</button></div>';
+
+  if(qType==='mc'){
+    const opts=shuffle([w,...getWrong(w)]);
+    box.innerHTML=header+'<div class="choices">'+opts.map(o=>'<button class="choice" data-han="'+o[0]+'">'+o[2]+'</button>').join('')+'</div><button class="skip-link">Bu soruyu geç →</button>';
+    box.querySelector('.skip-link').onclick=()=>{qIdx++;renderQ();};
+    box.querySelectorAll('.choice').forEach(btn=>btn.onclick=()=>{
+      const ok=btn.dataset.han===w[0];
+      box.querySelectorAll('.choice').forEach(b=>{b.classList.add('disabled');if(b.dataset.han===w[0])b.classList.add('correct');else if(b===btn&&!ok)b.classList.add('wrong');});
+      recordAnswer(w[0],ok);if(ok){qOk++;qStr++;}else{qErr++;qStr=0;}
+      setTimeout(()=>{qIdx++;renderQ();},850);
+    });
+  } else {
+    // Pinyin quiz
+    box.innerHTML=header+'<div class="pin-quiz-box"><div style="font-size:.82rem;opacity:.6;margin-bottom:8px">Bu karakterin pinyin yazımını gir (tonsuz kabul edilir)</div><div class="pin-input-row"><input class="pin-input" id="pinInput" placeholder="örn: wǒ veya wo" autocomplete="off" spellcheck="false"><button class="pin-check-btn" id="pinCheckBtn">Kontrol Et</button></div><div class="pin-hint" id="pinHint"></div></div><button class="skip-link">Bu soruyu geç →</button>';
+    box.querySelector('.skip-link').onclick=()=>{qIdx++;renderQ();};
+    const inp=document.getElementById('pinInput');
+    inp.focus();
+    function checkPin(){
+      const val=inp.value.trim().toLowerCase();
+      const correct=w[1].toLowerCase();
+      // strip tones for comparison
+      const strip=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[āáǎà]/g,'a').replace(/[ēéěè]/g,'e').replace(/[īíǐì]/g,'i').replace(/[ōóǒò]/g,'o').replace(/[ūúǔù]/g,'u').replace(/[ǖǘǚǜ]/g,'v').replace(/\s+/g,'');
+      const ok=strip(val)===strip(correct)||val===correct;
+      inp.classList.toggle('ok',ok);inp.classList.toggle('err',!ok);
+      document.getElementById('pinHint').textContent=ok?'✓ Doğru! ('+correct+')':'✗ Yanlış. Doğrusu: '+correct;
+      recordAnswer(w[0],ok);if(ok){qOk++;qStr++;}else{qErr++;qStr=0;}
+      setTimeout(()=>{qIdx++;renderQ();},1100);
+    }
+    document.getElementById('pinCheckBtn').onclick=checkPin;
+    inp.onkeydown=e=>{if(e.key==='Enter')checkPin();};
+  }
+  document.getElementById('qSoundBtn').onclick=function(){speak(w[0],this);};
+}
+
+function showResult(){
+  const total=qOk+qErr,pct=total?Math.round(qOk/total*100):0;
+  const emoji=pct>=80?'🎊':pct>=50?'💪':'😤';
+  const cls=pct>=80?'r-ok':pct>=50?'r-mid':'r-bad';
+  document.getElementById('qBox').innerHTML='<div class="q-result"><div class="r-han">'+emoji+'</div><div class="r-score '+cls+'">%'+pct+'</div><div class="r-lbl">'+qOk+' doğru &nbsp;·&nbsp; '+qErr+' yanlış &nbsp;·&nbsp; '+total+' soru</div><div class="r-btns"><button class="btn-red" id="retryBtn" style="padding:11px 20px">↺ Tekrar</button><button class="btn-grey" id="backQBtn" style="padding:11px 20px">Kategori seç</button></div></div>';
+  document.getElementById('retryBtn').onclick=()=>{qWords=shuffle(qWords);qIdx=0;qOk=0;qErr=0;qStr=0;renderQ();};
+  document.getElementById('backQBtn').onclick=()=>{document.getElementById('qBox').style.display='none';document.getElementById('qSetup').style.display='block';qPicked.clear();document.querySelectorAll('.qcat').forEach(b=>b.classList.remove('picked'));document.getElementById('startBtn').disabled=true;};
+}
+
+/* ════ WRITING (HanziWriter) ════ */
+let wCat=null,wIdx=0,hWriter=null,wInQuiz=false;
+
+function buildWriteCats(){
+  const el=document.getElementById('writeCatList');el.innerHTML='';
+  Object.keys(DATA).forEach(k=>{
+    const[tr,zh]=k.split(' ');const pct=catPct(k);
+    const d=document.createElement('div');d.className='cat';
+    d.innerHTML='<div class="zh">'+zh+'</div><div class="tr">'+tr+'</div><div class="ct">'+DATA[k].length+' karakter</div><div class="bar" style="width:'+pct+'%"></div>';
+    d.onclick=()=>openWrite(k);el.appendChild(d);
+  });
+}
+buildWriteCats();
+
+function openWrite(k){
+  wCat=k;wIdx=0;
+  document.getElementById('writeCatList').style.display='none';
+  document.getElementById('writeStudy').style.display='block';
+  renderWrite();
+}
+document.getElementById('backWrite').onclick=()=>{
+  document.getElementById('writeStudy').style.display='none';
+  document.getElementById('writeCatList').style.display='grid';
+  if(hWriter)hWriter=null;
+  buildWriteCats();
+};
+
+function renderWrite(){
+  const words=DATA[wCat];
+  // find first char of word (for multi-char words use first char)
+  const w=words[wIdx];
+  const char=w[0][0]; // use first character
+  document.getElementById('wHan').textContent=w[0];
+  document.getElementById('wPin').textContent=w[1];
+  document.getElementById('wTr').textContent=w[2];
+  document.getElementById('writInfo').textContent='';
+  document.getElementById('writInfo').className='writ-quiz-info';
+  wInQuiz=false;
+
+  // rebuild writer
+  const target=document.getElementById('hanziTarget');
+  target.innerHTML='';
+  const size=Math.min(220,window.innerWidth-80);
+
+  try{
+    hWriter=HanziWriter.create('hanziTarget',char,{
+      width:size,height:size,padding:16,
+      strokeColor:'#1a1410',radicalColor:'#c8352b',
+      highlightColor:'#3f7e6e',
+      drawingColor:'#1a1410',
+      drawingWidth:5,
+      showOutline:true,
+      outlineColor:'rgba(26,20,16,.12)',
+      strokeAnimationSpeed:1,
+      delayBetweenStrokes:300,
+      renderer:'svg'
+    });
+    buildStrokeDots(char);
+  }catch(e){
+    target.innerHTML='<div style="width:'+size+'px;height:'+size+'px;display:flex;align-items:center;justify-content:center;font-family:Noto Serif SC;font-size:7rem;font-weight:900;color:var(--ink);opacity:.15">'+char+'</div>';
+    document.getElementById('writInfo').textContent='Bu karakter için veri bulunamadı, farklı bir kelime dene.';
+    document.getElementById('writInfo').className='writ-quiz-info err';
+  }
+  recordSeen(w[0]);
+}
+
+function buildStrokeDots(char){
+  const el=document.getElementById('strokeDots');el.innerHTML='';
+  if(!hWriter)return;
+  try{
+    const n=hWriter.getCharacterData?hWriter.getCharacterData().strokes.length:0;
+    for(let i=0;i<n;i++){const d=document.createElement('div');d.className='stroke-dot';el.appendChild(d);}
+  }catch(e){}
+}
+
+document.getElementById('animBtn').onclick=()=>{
+  if(!hWriter)return;
+  wInQuiz=false;
+  document.getElementById('writInfo').textContent='Kalem sırasını izle...';
+  document.getElementById('writInfo').className='writ-quiz-info';
+  hWriter.cancelQuiz();
+  hWriter.animateCharacter({
+    onComplete:()=>document.getElementById('writInfo').textContent='Animasyon tamamlandı ✓'
+  });
+};
+
+document.getElementById('quizWriteBtn').onclick=()=>{
+  if(!hWriter)return;
+  wInQuiz=true;
+  document.getElementById('writInfo').textContent='✏️ Karakteri çiz! Doğru çizgi sırasını takip et.';
+  document.getElementById('writInfo').className='writ-quiz-info';
+  let mistakes=0;
+  hWriter.quiz({
+    onMistake:(data)=>{
+      mistakes++;
+      document.getElementById('writInfo').textContent='Yanlış çizgi, tekrar dene! ('+mistakes+' hata)';
+      document.getElementById('writInfo').className='writ-quiz-info err';
+    },
+    onCorrectStroke:(data)=>{
+      document.getElementById('writInfo').textContent='Doğru çizgi! Devam et... ('+data.strokeNum+'/'+data.totalStrokes+')';
+      document.getElementById('writInfo').className='writ-quiz-info ok';
+      const dots=document.querySelectorAll('.stroke-dot');
+      if(dots[data.strokeNum-1])dots[data.strokeNum-1].classList.add('done');
+    },
+    onComplete:(data)=>{
+      document.getElementById('writInfo').textContent='🎉 Tamamlandı! '+mistakes+' hata ile çizdin.';
+      document.getElementById('writInfo').className='writ-quiz-info ok';
+      recordAnswer(DATA[wCat][wIdx][0],mistakes===0);
+    }
+  });
+};
+
+document.getElementById('writeSoundBtn').onclick=function(){
+  if(wCat!==null)speak(DATA[wCat][wIdx][0],this);
+};
+document.getElementById('wPrevBtn').onclick=()=>{wIdx=(wIdx-1+DATA[wCat].length)%DATA[wCat].length;renderWrite();};
+document.getElementById('wNextBtn').onclick=()=>{wIdx=(wIdx+1)%DATA[wCat].length;renderWrite();};
+
+/* ════ SENTENCES ════ */
+document.getElementById('sent').innerHTML=SENT.map(s=>
+  '<div class="sent"><div class="s-zh">'+s[0]+'<button class="s-sound" onclick="speak(\''+s[0].replace(/'/g,"\\'")+'\')" title="Dinle">🔊</button></div>'
+  +'<div class="s-pin">'+s[1]+'</div><div class="s-tr">'+s[2]+'</div><div class="s-en">'+s[3]+'</div></div>'
+).join('');
+
+/* ════ GRAMMAR ════ */
+(function(){
+  const badgeMap = {easy:'gb-easy',mid:'gb-mid',hard:'gb-hard',key:'gb-key'};
+  const badgeLabel = {easy:'Kolay',mid:'Orta',hard:'İleri',key:'Kritik'};
+  let html = '';
+  GRAM.forEach(g => {
+    if(g.sec){
+      html += '<div class="gram-section">'+g.sec+'</div>';
+      return;
+    }
+    const b = badgeMap[g.badge]||'gb-easy';
+    const bl = badgeLabel[g.badge]||'';
+    let exHtml = (g.exs||[]).map(e =>
+      '<div class="gex">'
+      +'<div class="gex-zh">'+e[0]+'</div>'
+      +'<div class="gex-pin">'+e[1]+'</div>'
+      +'<div class="gex-tr">'+e[2]+'</div>'
+      +(e[3]?'<div class="gex-note">'+e[3]+'</div>':'')
+      +'</div>'
+    ).join('');
+    let pufHtml = g.puf ? '<div class="gpuf">'+g.puf+'</div>' : '';
+    html +=
+      '<div class="gcard">'
+      +'<div class="gcard-head">'
+      +'<div class="gcard-icon">'+g.icon+'</div>'
+      +'<div class="gcard-info">'
+      +'<div class="gcard-title">'+g.title+'</div>'
+      +'<div class="gcard-sub">'+g.sub+'</div>'
+      +'</div>'
+      +'<div class="gcard-right">'
+      +'<span class="gbadge '+b+'">'+bl+'</span>'
+      +'<span class="gcard-arrow">›</span>'
+      +'</div>'
+      +'</div>'
+      +'<div class="gcard-body">'
+      +'<div class="gcard-desc">'+g.desc+'</div>'
+      +'<div class="gcard-examples">'+exHtml+'</div>'
+      +pufHtml
+      +'</div>'
+      +'</div>';
+  });
+  document.getElementById('gram').innerHTML = html;
+  document.getElementById('gram').addEventListener('click', function(e){
+    const card = e.target.closest('.gcard');
+    if(card) card.classList.toggle('open');
+  });
+})();
+
+/* ════ NAV ════ */
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  document.getElementById(b.dataset.p).classList.add('on');
+});
+
+refreshStats();
+</script>
+</body>
+</html>

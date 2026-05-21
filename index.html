@@ -360,8 +360,8 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
 const DATA={
 "Zamirler 代词":[["我","wǒ","ben, beni","I, me"],["你","nǐ","sen","you"],["您","nín","siz (resmi)","you (formal)"],["他","tā","o (erkek)","he, him"],["她","tā","o (kadın)","she, her"],["我们","wǒmen","biz","we, us"],["你们","nǐmen","sizler","you (plural)"],["他们","tāmen","onlar","they, them"],["它","tā","o (cansız)","it"],["这","zhè","bu","this"],["那","nà","şu, o","that"],["这些","zhèxiē","bunlar","these"],["那些","nàxiē","şunlar","those"],["自己","zìjǐ","kendi","oneself"],["大家","dàjiā","herkes","everyone"]],
 "Hitaplar 称呼":[["先生","xiānshēng","bey, efendi","mr., sir"],["小姐","xiǎojiě","hanım (genç)","miss"],["太太","tàitai","hanımefendi","madame"],["老师","lǎoshī","öğretmen","teacher"],["医生","yīshēng","doktor","doctor"]],
-"Soru Kelimeleri 疑问词":[["什么","shénme","ne","what"],["几","jǐ","kaç","how many"],["谁","shéi","kim","who"],["什么时候","shénme shíhòu","ne zaman","when"],["哪里","nǎlǐ","nerede","where"],["为什么","wèishénme","neden","why"],["怎么","zěnme","nasıl","how"],["怎么样","zěnme yàng","nasıl olur","how about"]],
-"Önemli Kelimeler 常用词":[["不","bù","değil","not"],["了","le","değişim eki","change marker"],["很","hěn","çok","very"],["的","de","-in (iyelik)","of"],["还","hái","hâlâ, ayrıca","still, also"],["为","wéi","için","for"],["又","yòu","yine","again"],["从","cóng","-den beri","from, since"],["再","zài","tekrar","once more"],["这样","zhèyàng","böyle","like this"],["可能","kěnéng","belki","maybe"],["对","duì","doğru","correct"]],
+"Soru Edatları 疑问词":[["什么","shénme","ne","what"],["几","jǐ","kaç (az)","how many (small)"],["多少","duōshao","kaç, ne kadar","how many/much"],["谁","shéi","kim","who"],["什么时候","shénme shíhòu","ne zaman","when"],["哪里","nǎlǐ","nerede","where"],["哪个","nǎge","hangisi","which one"],["为什么","wèishénme","neden","why"],["怎么","zěnme","nasıl","how"],["怎么样","zěnme yàng","nasıl olur","how about"],["多","duō","ne kadar (sıfat önü)","how + adj"],["吗","ma","mı/mi (soru eki)","question particle"],["呢","ne","ya sen? peki?","what about"]],
+"Önemli Kelimeler 常用词":[["不","bù","değil","not"],["了","le","değişim/tamamlanma eki","change marker"],["很","hěn","çok","very"],["的","de","-in (iyelik/sıfat eki)","of/adj marker"],["也","yě","de, da","also"],["都","dōu","hepsi, hepsi de","all, both"],["还","hái","hâlâ, ayrıca","still, also"],["就","jiù","o zaman, tam","then, exactly"],["再","zài","tekrar","once more"],["又","yòu","yine (geçmiş)","again"],["从","cóng","-den, -dan itibaren","from, since"],["给","gěi","için, -e vermek","for, to give"],["对","duì","doğru, -e karşı","correct, toward"],["这样","zhèyàng","böyle","like this"],["那样","nàyàng","öyle","like that"],["可能","kěnéng","belki, mümkün","maybe, possible"],["一定","yīdìng","kesinlikle","certainly"],["真的","zhēn de","gerçekten","really"],["当然","dāngrán","tabii ki","of course"],["一起","yīqǐ","birlikte","together"],["已经","yǐjīng","zaten, çoktan","already"],["还是","háishi","yoksa, hâlâ","or, still"],["只","zhǐ","sadece","only"],["别","bié","yapma (emir)","don't"],["快","kuài","hızlı, çabuk","fast, hurry"],["慢","màn","yavaş","slow"],["好像","hǎoxiàng","sanki, gibi","seems like"],["其实","qíshí","aslında","actually"],["马上","mǎshàng","hemen, şimdi","right away"],["一下","yīxià","bir an, biraz","a moment"]],
 "Zaman 时间":[["天","tiān","gün","day"],["星期","xīngqí","hafta","week"],["月","yuè","ay","month"],["年","nián","yıl","year"],["今天","jīntiān","bugün","today"],["昨天","zuótiān","dün","yesterday"],["明天","míngtiān","yarın","tomorrow"],["小时","xiǎoshí","saat (süre)","hour"],["分钟","fēnzhōng","dakika","minute"],["时间","shíjiān","zaman","time"],["以前","yǐqián","önce","before"],["以后","yǐhòu","sonra","after"],["现在","xiànzài","şimdi","now"],["次","cì","kez, defa","occasion"]],
 "Yerler 地点":[["这里","zhèlǐ","burası","here"],["那里","nàlǐ","orası","there"],["地方","dìfāng","yer","place"],["学校","xuéxiào","okul","school"],["店","diàn","dükkân","shop"],["工作","gōngzuò","iş; çalışmak","work"],["洗手间","xǐshǒujiān","tuvalet","bathroom"],["城市","chéngshì","şehir","city"],["国家","guójiā","ülke","country"],["中国","Zhōngguó","Çin","China"],["公司","gōngsī","şirket","company"]],
 "Eşyalar 东西":[["东西","dōngxi","şey, eşya","thing"],["事","shì","mesele","matter"],["家","jiā","ev","home"],["车","chē","araba","car"],["问题","wèntí","soru, sorun","problem"]],
@@ -432,18 +432,57 @@ const SORALA=[
 ];
 
 const SENT=[
+["你好!","nǐ hǎo!","Merhaba!","Hello!"],
+["再见!","zàijiàn!","Hoşça kal!","Goodbye!"],
+["谢谢你","xièxie nǐ","Teşekkür ederim","Thank you"],
+["不客气","bú kèqi","Rica ederim","You're welcome"],
+["对不起","duìbuqǐ","Özür dilerim","I'm sorry"],
+["没关系","méi guānxi","Önemli değil","No problem"],
+["请问...","qǐngwèn...","Bir şey sorabilir miyim...","Excuse me, may I ask..."],
+["我不懂","wǒ bù dǒng","Anlamıyorum","I don't understand"],
+["请再说一遍","qǐng zài shuō yībiàn","Tekrar söyler misiniz?","Please say it again"],
+["请说慢一点","qǐng shuō màn yīdiǎn","Daha yavaş konuşur musunuz?","Please speak slower"],
 ["我是学生","wǒ shì xuésheng","Ben öğrenciyim","I am a student"],
 ["你是中国人吗?","nǐ shì Zhōngguó rén ma?","Sen Çinli misin?","Are you Chinese?"],
 ["这是我的朋友","zhè shì wǒ de péngyǒu","Bu benim arkadaşım","This is my friend"],
+["你叫什么名字?","nǐ jiào shénme míngzi?","Adın ne?","What is your name?"],
+["我叫...","wǒ jiào...","Benim adım...","My name is..."],
+["你好吗?","nǐ hǎo ma?","Nasılsın?","How are you?"],
+["我很好，谢谢","wǒ hěn hǎo, xièxie","İyiyim, teşekkürler","I'm fine, thank you"],
 ["我要去学校","wǒ yào qù xuéxiào","Okula gitmek istiyorum","I want to go to school"],
 ["他不在家","tā bú zài jiā","O evde değil","He is not at home"],
-["你叫什么名字?","nǐ jiào shénme míngzi?","Adın ne?","What is your name?"],
 ["我没有时间","wǒ méiyǒu shíjiān","Zamanım yok","I have no time"],
 ["今天天气很好","jīntiān tiānqì hěn hǎo","Bugün hava çok güzel","The weather is nice today"],
-["因为我很忙所以不能去","yīnwèi wǒ hěn máng suǒyǐ bù néng qù","Çok meşgul olduğum için gidemem","Because I'm busy I can't go"],
 ["你想喝什么?","nǐ xiǎng hē shénme?","Ne içmek istersin?","What do you want to drink?"],
-["我的朋友很好","wǒ de péngyǒu hěn hǎo","Arkadaşım çok iyi","My friend is very good"],
-["你去哪里?","nǐ qù nǎlǐ?","Nereye gidiyorsun?","Where are you going?"]
+["我要一杯水","wǒ yào yī bēi shuǐ","Bir bardak su istiyorum","I want a glass of water"],
+["你去哪里?","nǐ qù nǎlǐ?","Nereye gidiyorsun?","Where are you going?"],
+["洗手间在哪里?","xǐshǒujiān zài nǎlǐ?","Tuvalet nerede?","Where is the bathroom?"],
+["多少钱?","duōshao qián?","Ne kadar?","How much?"],
+["太贵了","tài guì le","Çok pahalı","Too expensive"],
+["能便宜一点吗?","néng piányí yīdiǎn ma?","Biraz indirim olur mu?","Can it be cheaper?"],
+["我可以试试吗?","wǒ kěyǐ shìshì ma?","Deneyebilir miyim?","Can I try it?"],
+["我听不懂","wǒ tīng bù dǒng","Anlayamıyorum","I can't understand"],
+["你会说英语吗?","nǐ huì shuō Yīngyǔ ma?","İngilizce biliyor musun?","Do you speak English?"],
+["我在学中文","wǒ zài xué Zhōngwén","Çince öğreniyorum","I'm learning Chinese"],
+["我饿了","wǒ è le","Acıktım","I'm hungry"],
+["我渴了","wǒ kě le","Susadım","I'm thirsty"],
+["我累了","wǒ lèi le","Yoruldum","I'm tired"],
+["我不舒服","wǒ bù shūfu","İyi hissetmiyorum","I don't feel well"],
+["今天几号?","jīntiān jǐ hào?","Bugün kaçıncı?","What's today's date?"],
+["现在几点?","xiànzài jǐ diǎn?","Saat kaç?","What time is it now?"],
+["我迟到了","wǒ chídào le","Geç kaldım","I'm late"],
+["等一下","děng yīxià","Bir saniye bekle","Wait a moment"],
+["我们走吧","wǒmen zǒu ba","Gidelim","Let's go"],
+["没问题!","méi wèntí!","Sorun yok!","No problem!"],
+["我同意","wǒ tóngyì","Katılıyorum","I agree"],
+["我不同意","wǒ bù tóngyì","Katılmıyorum","I disagree"],
+["帮我一下","bāng wǒ yīxià","Bana yardım eder misin?","Help me please"],
+["我迷路了","wǒ mí lù le","Kayboldum","I'm lost"],
+["打折吗?","dǎzhé ma?","İndirim var mı?","Is there a discount?"],
+["我要结账","wǒ yào jiézhàng","Hesap lütfen","I want to pay"],
+["好吃!","hǎo chī!","Çok lezzetli!","Delicious!"],
+["我喜欢这里","wǒ xǐhuān zhèlǐ","Burayı seviyorum","I like it here"],
+["下次见!","xià cì jiàn!","Bir dahaki sefere!","See you next time!"]
 ];
 const GRAM=[
 // ── TEMEL ──
@@ -579,7 +618,7 @@ let vCat=null,vIdx=0,vMode='tr';
 function buildCats(){
   const el=document.getElementById('catList');el.innerHTML='';
   Object.keys(DATA).forEach(k=>{
-    const[tr,zh]=k.split(' ');const pct=catPct(k);
+    const lastSpace=k.lastIndexOf(' ');const zh=k.slice(lastSpace+1);const tr=k.slice(0,lastSpace);const pct=catPct(k);
     const d=document.createElement('div');d.className='cat';
     d.innerHTML='<div class="zh">'+zh+'</div><div class="tr">'+tr+'</div><div class="ct">'+DATA[k].length+' kelime · %'+pct+'</div><div class="bar" style="width:'+pct+'%"></div>';
     d.onclick=()=>openStudy(k);el.appendChild(d);
@@ -613,7 +652,7 @@ function setQType(t){
 (function(){
   const el=document.getElementById('qCatList');
   Object.keys(DATA).forEach(k=>{
-    const[tr,zh]=k.split(' ');
+    const lastSpace=k.lastIndexOf(' ');const zh=k.slice(lastSpace+1);const tr=k.slice(0,lastSpace);
     const d=document.createElement('div');d.className='qcat';
     d.innerHTML='<span class="qz">'+zh+'</span>'+tr;
     d.onclick=()=>{d.classList.toggle('picked');qPicked.has(k)?qPicked.delete(k):qPicked.add(k);document.getElementById('startBtn').disabled=qPicked.size===0;};
@@ -681,7 +720,7 @@ let wCat=null,wIdx=0,hWriter=null,wInQuiz=false;
 function buildWriteCats(){
   const el=document.getElementById('writeCatList');el.innerHTML='';
   Object.keys(DATA).forEach(k=>{
-    const[tr,zh]=k.split(' ');const pct=catPct(k);
+    const lastSpace=k.lastIndexOf(' ');const zh=k.slice(lastSpace+1);const tr=k.slice(0,lastSpace);const pct=catPct(k);
     const d=document.createElement('div');d.className='cat';
     d.innerHTML='<div class="zh">'+zh+'</div><div class="tr">'+tr+'</div><div class="ct">'+DATA[k].length+' karakter</div><div class="bar" style="width:'+pct+'%"></div>';
     d.onclick=()=>openWrite(k);el.appendChild(d);

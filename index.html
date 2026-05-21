@@ -384,7 +384,18 @@ const NUMS=[
   ["二十一","èr shí yī","21"],["二十二","èr shí èr","22"],["二十三","èr shí sān","23"],
   ["二十四","èr shí sì","24"],["二十五","èr shí wǔ","25"],["三十","sān shí","30"],
   ["四十","sì shí","40"],["五十","wǔ shí","50"],["六十","liù shí","60"],
-  ["七十","qī shí","70"],["八十","bā shí","80"],["九十","jiǔ shí","90"],["一百","yī bǎi","100"]
+  ["七十","qī shí","70"],["八十","bā shí","80"],["九十","jiǔ shí","90"],["一百","yī bǎi","100"],
+  ["一百零一","yī bǎi líng yī","101"],["一百二十","yī bǎi èr shí","120"],["一百五十","yī bǎi wǔ shí","150"],
+  ["两百","liǎng bǎi","200"],["三百","sān bǎi","300"],["四百","sì bǎi","400"],
+  ["五百","wǔ bǎi","500"],["六百","liù bǎi","600"],["七百","qī bǎi","700"],
+  ["八百","bā bǎi","800"],["九百","jiǔ bǎi","900"],
+  ["一千","yī qiān","1.000"],["两千","liǎng qiān","2.000"],["三千","sān qiān","3.000"],
+  ["五千","wǔ qiān","5.000"],["一万","yī wàn","10.000"],["两万","liǎng wàn","20.000"],
+  ["十万","shí wàn","100.000"],["一百万","yī bǎi wàn","1.000.000"],["一亿","yī yì","100.000.000"],
+  ["第一","dì yī","1. (birinci)"],["第二","dì èr","2. (ikinci)"],["第三","dì sān","3. (üçüncü)"],
+  ["第十","dì shí","10. (onuncu)"],["第一百","dì yī bǎi","100. (yüzüncü)"],
+  ["半","bàn","yarım (½)"],["四分之一","sì fēn zhī yī","çeyrek (¼)"],["三分之一","sān fēn zhī yī","üçte bir (⅓)"],
+  ["百分之五十","bǎi fēn zhī wǔ shí","yüzde elli (%50)"],["百分之一百","bǎi fēn zhī yī bǎi","yüzde yüz (%100)"]
 ];
 const MEASURE=[
   {mw:"个",pin:"gè",use:"Genel ölçü — çoğu şey için geçer",
@@ -907,7 +918,7 @@ function switchNumTab(t){
 }
 (function buildNumbers(){
   const sec=document.getElementById('numSection');
-  sec.innerHTML='<div class="num-note">💡 <strong>2 sayısı:</strong> Ölçü kelimesiyle <strong>两 liǎng</strong> kullan: 两个人 (iki kişi). Sıra sayısında 二 (èr) kullanılır. &nbsp;·&nbsp; <strong>一 yī</strong> 4. ton önünde yí, 1./2./3. ton önünde yì olur.</div><div class="num-grid" id="numGrid"></div>';
+  sec.innerHTML='<div class="num-note">💡 <strong>Temel Kurallar:</strong> · <strong>2 sayısı:</strong> Ölçü kelimesiyle <strong>两 liǎng</strong> kullan (两个人 iki kişi); sırada/matematikte <strong>二 èr</strong>. · <strong>一 yī</strong> ton değişimi: 4.ton önünde yí, 1-3.ton önünde yì. · <strong>100-999 arası:</strong> 一百零五 (105) — ortadaki sıfır için 零 kullan. · <strong>2.000+:</strong> 两 kullan: 两千 (2.000), 两万 (20.000). · <strong>Sıra sayısı:</strong> 第 dì + sayı → 第一 (birinci). · <strong>Kesirler:</strong> X分之Y = Y/X. · <strong>Yüzde:</strong> 百分之X = %X.</div><div class="num-grid" id="numGrid"></div>';
   const grid=document.getElementById('numGrid');
   NUMS.forEach(n=>{
     const c=document.createElement('div');c.className='num-card';

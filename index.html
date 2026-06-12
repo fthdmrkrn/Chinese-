@@ -155,6 +155,48 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
 .sent-play-all:active{transform:translateY(2px);box-shadow:none}
 
 
+
+/* PLAN / LEVEL PATH */
+.lvlbar{background:rgba(255,255,255,.65);border:1px solid var(--line);border-radius:15px;padding:13px;margin-bottom:13px}
+.lvlbar .ttl{font-size:.72rem;font-weight:700;opacity:.55;margin-bottom:8px}
+.lvltrack{display:flex;align-items:flex-start}
+.lvldot{flex:1;text-align:center;position:relative}
+.lvldot .c{width:30px;height:30px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;background:rgba(0,0,0,.07);color:var(--ink);border:2px solid var(--line)}
+.lvldot.done .c{background:var(--ok);color:#fff;border-color:var(--ok)}
+.lvldot.cur .c{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 0 0 4px rgba(200,53,43,.18)}
+.lvldot::after{content:"";position:absolute;top:15px;left:calc(50% + 17px);width:calc(100% - 34px);height:2px;background:var(--line)}
+.lvldot:last-child::after{display:none}
+.lvldot.done::after{background:var(--ok)}
+.lvlcard{background:rgba(255,255,255,.65);border:1px solid var(--line);border-radius:15px;margin-bottom:11px;overflow:hidden}
+.lvlcard.locked{opacity:.5}
+.lvlhead{display:flex;align-items:center;gap:11px;padding:14px;cursor:pointer;user-select:none}
+.lvlcard.locked .lvlhead{cursor:not-allowed}
+.lvlbadge{min-width:52px;text-align:center;font-family:'Noto Serif SC';font-weight:900;font-size:.95rem;background:var(--ink);color:var(--paper);border-radius:10px;padding:7px 6px}
+.lvlcard.passed .lvlbadge{background:var(--ok)}
+.lvlhead .ht{flex:1}.lvlhead .ht b{font-size:.9rem;display:block}.lvlhead .ht small{font-size:.68rem;opacity:.55}
+.lvlhead .arrow{font-size:.8rem;opacity:.4;transition:.25s}
+.lvlcard.open .arrow{transform:rotate(90deg)}
+.lvlbody{display:none;padding:0 14px 14px;border-top:1px dashed var(--line)}
+.lvlcard.open .lvlbody{display:block}
+.lvlnote{font-size:.78rem;line-height:1.55;background:rgba(214,164,76,.12);border-left:3px solid var(--gold);border-radius:0 9px 9px 0;padding:10px 11px;margin:12px 0}
+.unit{margin-bottom:10px}
+.unit .ut{font-size:.76rem;font-weight:800;margin-bottom:5px;color:var(--red-d)}
+.task{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:.78rem;line-height:1.45;border-bottom:1px dashed rgba(26,20,16,.07)}
+.task input{margin-top:2px;accent-color:var(--ok);width:15px;height:15px;flex:none}
+.task.done span{opacity:.45;text-decoration:line-through}
+.golink{border:none;background:rgba(63,126,110,.13);color:var(--jade);font-family:var(--f-ui);font-weight:700;font-size:.66rem;padding:2px 8px;border-radius:20px;cursor:pointer;white-space:nowrap}
+.lvltest-btn{width:100%;margin-top:11px;border:none;border-radius:12px;padding:13px;font-family:var(--f-ui);font-weight:800;font-size:.85rem;cursor:pointer;background:var(--red);color:#fff;box-shadow:0 5px 12px rgba(200,53,43,.3)}
+.lvltest-btn.passed{background:var(--ok);box-shadow:none}
+.lt-q{background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:13px;padding:13px;margin-bottom:10px}
+.lt-q .qt{font-size:.84rem;font-weight:700;margin-bottom:9px;line-height:1.5}
+.lt-q .qt .zh{font-family:var(--f-zh-sm)}
+.lt-opts{display:grid;gap:7px}
+.lt-opts button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px;font-family:var(--f-ui);font-size:.8rem;text-align:left;cursor:pointer}
+.lt-opts button.sel{border-color:var(--ink);background:rgba(26,20,16,.06);font-weight:700}
+.lt-res{text-align:center;padding:18px;border-radius:13px;font-weight:800;margin-bottom:10px;font-size:1rem}
+.lt-res.ok{background:rgba(45,138,94,.13);color:var(--ok)}
+.lt-res.fail{background:rgba(200,53,43,.1);color:var(--red)}
+
 /* GRAMMAR */
 .gram-section{font-family:var(--f-ui);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;opacity:.42;margin:16px 0 8px;padding:0 2px}
 .gcard{background:rgba(255,255,255,.68);border:1px solid var(--line);border-radius:16px;margin-bottom:9px;overflow:hidden;transition:.2s;cursor:pointer}
@@ -261,6 +303,7 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
     <button data-p="sorala">🃏 Sırala</button>
     <button data-p="sent">💬 Cümle</button>
     <button data-p="gram">📘 Gramer</button>
+    <button data-p="plan">🗺️ Plan</button>
   </nav>
 
   <!-- VOCAB -->
@@ -345,6 +388,9 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
   <!-- GRAMMAR -->
   <div id="gram" class="panel"></div>
 
+  <!-- PLAN / SEVIYE YOLU -->
+  <div id="plan" class="panel"><div id="planBox"></div></div>
+
   <!-- NUMBERS -->
   <div id="numbers" class="panel">
     <div class="num-tabs">
@@ -389,7 +435,7 @@ const DATA={
   ["公共汽车","gōnggòng qìchē","otobüs","bus"],["地铁","dìtiě","metro","subway"],["出租车","chūzūchē","taksi","taxi"],["飞机","fēijī","uçak","airplane"],["火车","huǒchē","tren","train"],["高铁","gāotiě","hızlı tren","high-speed rail"],["船","chuán","gemi","ship"],["自行车","zìxíngchē","bisiklet","bicycle"],["摩托车","mótuōchē","motosiklet","motorcycle"],["机场","jīchǎng","havalimanı","airport"],["火车站","huǒchēzhàn","tren garı","train station"],["地铁站","dìtiě zhàn","metro istasyonu","subway station"],["公交站","gōngjiāo zhàn","otobüs durağı","bus stop"],["票","piào","bilet","ticket"],["单程","dān chéng","tek yön","one way"],["来回","lái huí","gidiş-dönüş","round trip"],["堵车","dǔ chē","trafik sıkışıklığı","traffic jam"],["停车场","tíngchē chǎng","otopark","parking lot"],["红绿灯","hónglǜdēng","trafik lambası","traffic light"],["左转","zuǒ zhuǎn","sola dön","turn left"],["右转","yòu zhuǎn","sağa dön","turn right"],["直走","zhí zǒu","düz git","go straight"]
 ],
 "Alışveriş 购物":[
-  ["超市","chāoshì","süpermarket","supermarket"],["商场","shāngchǎng","AVM / çarşı","mall"],["价格","jiàgé","fiyat","price"],["便宜","piányí","ucuz","cheap"],["贵","guì","pahalı","expensive"],["打折","dǎzhé","indirim","discount"],["免费","miǎnfèi","ücretsiz","free"],["付款","fùkuǎn","ödeme yapmak","to pay"],["现金","xiànjīn","nakit","cash"],["刷卡","shuā kǎ","kartla ödemek","pay by card"],["找零","zhǎo líng","para üstü","change (money)"],["收据","shōujù","fiş/makbuz","receipt"],["换","huàn","değiştirmek","to exchange"],["退货","tuì huò","iade etmek","to return goods"],["号码","hàomǎ","numara/beden","size/number"],["大号","dà hào","büyük beden","large size"],["小号","xiǎo hào","küçük beden","small size"],["颜色","yánsè","renk","color"],["款式","kuǎnshì","model/stil","style"],["质量","zhìliàng","kalite","quality"]
+  ["超市","chāoshì","süpermarket","supermarket"],["商场","shāngchǎng","AVM / çarşı","mall"],["价格","jiàgé","fiyat","price"],["便宜","piányi","ucuz","cheap"],["贵","guì","pahalı","expensive"],["打折","dǎzhé","indirim","discount"],["免费","miǎnfèi","ücretsiz","free"],["付款","fùkuǎn","ödeme yapmak","to pay"],["现金","xiànjīn","nakit","cash"],["刷卡","shuā kǎ","kartla ödemek","pay by card"],["找零","zhǎo líng","para üstü","change (money)"],["收据","shōujù","fiş/makbuz","receipt"],["换","huàn","değiştirmek","to exchange"],["退货","tuì huò","iade etmek","to return goods"],["号码","hàomǎ","numara/beden","size/number"],["大号","dà hào","büyük beden","large size"],["小号","xiǎo hào","küçük beden","small size"],["颜色","yánsè","renk","color"],["款式","kuǎnshì","model/stil","style"],["质量","zhìliàng","kalite","quality"]
 ],
 "Duygular & Hâl 感情":[
   ["高兴","gāoxìng","mutlu","happy"],["开心","kāixīn","neşeli","cheerful"],["难过","nánguò","üzgün","sad"],["生气","shēngqì","kızgın","angry"],["害怕","hàipà","korkmuş","scared"],["担心","dānxīn","endişeli","worried"],["紧张","jǐnzhāng","gergin","nervous"],["放松","fàngsōng","rahatlamış","relaxed"],["累","lèi","yorgun","tired"],["无聊","wúliáo","sıkılmış","bored"],["兴奋","xīngfèn","heyecanlı","excited"],["惊讶","jīngyà","şaşırmış","surprised"],["满意","mǎnyì","memnun","satisfied"],["后悔","hòuhuǐ","pişman","regretful"],["爱","ài","sevmek / aşk","love"],["喜欢","xǐhuān","beğenmek","like"],["讨厌","tǎoyàn","sevmemek","dislike"],["感谢","gǎnxiè","minnettarlık","gratitude"]
@@ -411,8 +457,14 @@ const DATA={
 ],
 "İş Görüşmeleri 商务对话":[
   ["您好，我是...","nín hǎo, wǒ shì...","Merhaba, ben...","Hello, I am..."],["请问贵公司...","qǐng wèn guì gōngsī...","Şirketiniz hakkında sorabilir miyim...","May I ask about your company..."],["我们需要报价","wǒmen xūyào bào jià","Fiyat teklifinize ihtiyacımız var","We need a quotation"],["能提供样品吗","néng tígōng yàngpǐn ma","Numune sağlayabilir misiniz?","Can you provide samples?"],["最小起订量是多少","zuì xiǎo qǐ dìng liàng shì duōshao","MOQ nedir?","What is the MOQ?"],["交货期多长","jiāo huò qī duō cháng","Teslimat süresi ne kadar?","How long is the delivery time?"],["价格可以优惠吗","jià gé kěyǐ yōuhuì ma","Fiyatta indirim yapılabilir mi?","Can you offer a discount?"],["质量有保证吗","zhì liàng yǒu bǎo zhèng ma","Kalitesi garanti mi?","Is the quality guaranteed?"],["有CE认证吗","yǒu CE rèn zhèng ma","CE sertifikası var mı?","Do you have CE certification?"],["我们已收到货款","wǒmen yǐ shōu dào huò kuǎn","Ödemeyi aldık","We have received the payment"],["请发送合同","qǐng fā sòng hé tóng","Lütfen sözleşme gönderin","Please send the contract"],["请确认订单","qǐng quèrèn dìng dān","Lütfen siparişi onaylayın","Please confirm the order"],["货物已发出","huò wù yǐ fā chū","Mal gönderildi","Goods have been shipped"],["运单号是多少","yùn dān hào shì duōshao","Takip numarası nedir?","What is the tracking number?"],["收到货后请告知","shōu dào huò hòu qǐng gào zhī","Malı alınca haber verin","Please inform us when you receive the goods"]
-]
-};
+],
+"B1 Kelimeler 中级":[
+["把","bǎ","nesneyi öne alma edatı","object-fronting particle"],["被","bèi","edilgen edatı (-tarafından)","passive marker"],["应该","yīnggāi","-meli, gerekli","should"],["必须","bìxū","mutlaka, zorunlu","must"],["决定","juédìng","karar vermek; karar","to decide; decision"],["完成","wánchéng","tamamlamak","to complete"],["开始","kāishǐ","başlamak","to begin"],["结束","jiéshù","bitmek, sona ermek","to end"],["努力","nǔlì","çabalamak; gayretli","to strive; hardworking"],["注意","zhùyì","dikkat etmek","to pay attention"],["担心","dānxīn","endişelenmek","to worry"],["放心","fàngxīn","içi rahat olmak","to be at ease"],["同意","tóngyì","kabul etmek, aynı fikirde olmak","to agree"],["反对","fǎnduì","karşı çıkmak","to oppose"],["解决","jiějué","çözmek","to solve"],["影响","yǐngxiǎng","etkilemek; etki","to affect; influence"],["环境","huánjìng","çevre, ortam","environment"],["经验","jīngyàn","deneyim","experience"],["机会","jīhuì","fırsat","opportunity"],["习惯","xíguàn","alışkanlık; alışmak","habit; to get used to"],["关系","guānxi","ilişki, bağlantı","relationship"],["文化","wénhuà","kültür","culture"],["健康","jiànkāng","sağlık; sağlıklı","health; healthy"],["安全","ānquán","güvenlik; güvenli","safety; safe"]],
+"B2 Kelimeler 中高级":[
+["不但","bùdàn","yalnızca ... değil","not only"],["而且","érqiě","üstelik, ayrıca","moreover"],["既然","jìrán","madem","since (given that)"],["除非","chúfēi","olmadıkça, ... hariç","unless"],["否则","fǒuzé","aksi takdirde","otherwise"],["难道","nándào","yoksa ... mı? (retorik)","could it be that...?"],["恐怕","kǒngpà","korkarım ki, maalesef","I'm afraid that"],["千万","qiānwàn","sakın, mutlaka (uyarı)","by all means / never"],["尽管","jǐnguǎn","her ne kadar; çekinmeden","even though; feel free to"],["甚至","shènzhì","hatta, bile","even (to the point of)"],["毕竟","bìjìng","ne de olsa, sonuçta","after all"],["显然","xiǎnrán","açıkça, belli ki","obviously"],["标准","biāozhǔn","standart, ölçüt","standard"],["质量","zhìliàng","kalite","quality"],["竞争","jìngzhēng","rekabet; rekabet etmek","competition; to compete"],["合同","hétong","sözleşme","contract"],["谈判","tánpàn","müzakere; müzakere etmek","negotiation; to negotiate"],["利润","lìrùn","kâr","profit"],["风险","fēngxiǎn","risk","risk"],["投资","tóuzī","yatırım; yatırım yapmak","investment; to invest"],["市场","shìchǎng","pazar, piyasa","market"],["客户","kèhù","müşteri (kurumsal)","client, customer"]],
+"Deyimler 成语":[
+["马马虎虎","mǎmǎhūhū","şöyle böyle, idare eder","so-so, careless"],["乱七八糟","luànqībāzāo","karmakarışık, darmadağın","in a mess"],["自言自语","zìyánzìyǔ","kendi kendine konuşmak","to talk to oneself"],["入乡随俗","rùxiāngsuísú","bulunduğun yerin âdetine uy","when in Rome..."],["一举两得","yījǔliǎngdé","bir taşla iki kuş","kill two birds with one stone"],["熟能生巧","shúnéngshēngqiǎo","pratik ustalaştırır","practice makes perfect"],["半途而废","bàntú'érfèi","yarı yolda bırakmak","to give up halfway"],["画蛇添足","huàshétiānzú","gereksiz ekleme yapıp işi bozmak","to ruin by adding the superfluous"],["亡羊补牢","wángyángbǔláo","geç de olsa önlem almak","better late than never"],["滥竽充数","lànyúchōngshù","ehil olmadan yer doldurmak","to make up the numbers"],["对牛弹琴","duìniútánqín","öküzün önünde lir çalmak (boşa anlatmak)","to cast pearls before swine"],["井底之蛙","jǐngdǐzhīwā","kuyu dibindeki kurbağa (dar görüşlü)","narrow-minded person"],["大同小异","dàtóngxiǎoyì","aşağı yukarı aynı","largely similar"],["见仁见智","jiànrénjiànzhì","herkesin görüşü farklı, yoruma açık","opinions differ"],["不言而喻","bùyán'éryù","söylemeye gerek yok, aşikâr","self-evident"],["鞭长莫及","biānchángmòjí","gücü/etkisi yetişememek","beyond one's reach"]]
+};;
 /* ════ NUMBERS DATA ════ */
 const NUMS=[
   ["零","líng","0"],["一","yī","1"],["二","èr","2"],["三","sān","3"],["四","sì","4"],
@@ -518,7 +570,7 @@ const SENT=[
 ["洗手间在哪里?","xǐshǒujiān zài nǎlǐ?","Tuvalet nerede?","Where is the bathroom?"],
 ["多少钱?","duōshao qián?","Ne kadar?","How much?"],
 ["太贵了","tài guì le","Çok pahalı","Too expensive"],
-["能便宜一点吗?","néng piányí yīdiǎn ma?","Biraz indirim olur mu?","Can it be cheaper?"],
+["能便宜一点吗?","néng piányi yīdiǎn ma?","Biraz indirim olur mu?","Can it be cheaper?"],
 ["我可以试试吗?","wǒ kěyǐ shìshì ma?","Deneyebilir miyim?","Can I try it?"],
 ["我听不懂","wǒ tīng bù dǒng","Anlayamıyorum","I can't understand"],
 ["你会说英语吗?","nǐ huì shuō Yīngyǔ ma?","İngilizce biliyor musun?","Do you speak English?"],
@@ -675,8 +727,43 @@ const GRAM=[
  exs:[["东西","dōngxi","şey, eşya","xi nötr"],["名字","míngzi","isim","zi nötr"],["学生","xuésheng","öğrenci","sheng nötr"]]},
 {icon:"🔄",title:"Ton Değişimi (变调)",badge:"hard",sub:"İki 3. ton yan yana → 2. + 3.",
  desc:"Kurallar: (1) 3. ton + 3. ton → <strong>2. ton + 3. ton</strong>. (2) <strong>不 bù</strong>, 4. ton önünde <strong>bú</strong> olur. (3) <strong>一 yī</strong>: 4. ton önünde <strong>yí</strong> (2.ton); 1./2./3. ton önünde <strong>yì</strong> (4.ton); tek başına veya sıra sayısında değişmez.",
- exs:[["你好","nǐ hǎo → níhǎo","merhaba","3+3 → 2+3"],["不是","bù shì → bú shì","değil","4. ton önünde bú"],["一本书","yī běn shū → yì běn shū","bir kitap","1. ton önünde yì (4.ton) olur"]],
+ exs:[["你好","nǐ hǎo → níhǎo","merhaba","3+3 → 2+3"],["不是","bù shì → bú shì","değil","4. ton önünde bú"],["一本书","yī běn shū → yì běn shū","bir kitap","3. ton önünde yì (4. ton) olur"]],
  puf:"Günlük konuşmada 你好'yu nǐhǎo değil níhǎo diye söylersin!"},
+// ── İLERİ SEVİYE (B1+) ──
+{sec:"🚀 İleri Seviye (B1+)"},
+{icon:"📦",title:"把 bǎ — nesneyi öne alma",badge:"hard",sub:"Özne + 把 + nesne + fiil + ek",
+ desc:"<strong>把 bǎ</strong> nesneyi fiilin ÖNÜNE taşır; 'nesneye ne yapıldığını' vurgular. Kural: fiil tek başına kalamaz, sonuna mutlaka bir öğe gelir (了, 在+yer, 给+kişi, sonuç eki...). Nesne belirli (bilinen) bir şey olmalıdır.",
+ exs:[["我把书放在桌子上","wǒ bǎ shū fàng zài zhuōzi shàng","Kitabı masanın üstüne koydum","fiil + 在 + yer"],["请把门关上","qǐng bǎ mén guān shàng","Lütfen kapıyı kapat","fiil + sonuç eki"],["他把咖啡喝完了","tā bǎ kāfēi hē wán le","Kahveyi içip bitirdi","fiil + 完 + 了"]],
+ puf:"❌ 我把书放 (eksik) — fiilden sonra mutlaka bir ek öğe gerekir."},
+{icon:"🎭",title:"被 bèi — edilgen çatı",badge:"hard",sub:"Nesne + 被 (+fail) + fiil + ek",
+ desc:"<strong>被 bèi</strong> edilgen yapar: etkilenen şey özne konumuna geçer. Faili söylemek isteğe bağlıdır. Geleneksel olarak istenmeyen/olumsuz olaylarda yaygındır, modern dilde nötr kullanım da artmıştır.",
+ exs:[["我的手机被偷了","wǒ de shǒujī bèi tōu le","Telefonum çalındı","fail söylenmedi"],["蛋糕被他吃了","dàngāo bèi tā chī le","Pasta onun tarafından yendi","fail: 他"],["问题被解决了","wèntí bèi jiějué le","Sorun çözüldü","nötr kullanım"]]},
+{icon:"🎯",title:"Sonuç Tamlayıcıları",badge:"hard",sub:"fiil + 懂/完/到/好 = sonucu söyle",
+ desc:"Fiilin ardına gelen ikinci öğe eylemin SONUCUNU bildirir: <strong>听懂</strong> dinleyip anlamak, <strong>看完</strong> okuyup bitirmek, <strong>找到</strong> arayıp bulmak, <strong>做好</strong> yapıp tamamlamak. Olumsuz 'yapamama' için araya 不 girer: 听<strong>不</strong>懂.",
+ exs:[["我听懂了","wǒ tīng dǒng le","Dinleyip anladım",""],["我听不懂","wǒ tīng bu dǒng","Anlayamıyorum (dinlesem de)","potansiyel olumsuz"],["我找到工作了","wǒ zhǎo dào gōngzuò le","İş buldum","到 = hedefe ulaşma"]]},
+{icon:"🧭",title:"Yön Tamlayıcıları",badge:"hard",sub:"来/去 konuşana göre yön verir",
+ desc:"<strong>来 lái</strong> konuşana DOĞRU, <strong>去 qù</strong> konuşandan UZAĞA hareket bildirir: 进来 içeri gel, 进去 içeri gir (uzaklaşarak), 回来 geri gel, 出去 dışarı çık. Bileşik biçim: 站<strong>起来</strong> ayağa kalkmak.",
+ exs:[["请进来","qǐng jìnlái","İçeri gel(in)","konuşan içeride"],["他出去了","tā chūqù le","Dışarı çıktı","konuşan içeride"],["快回来!","kuài huílái!","Çabuk geri dön!",""]]},
+{icon:"⏸",title:"着 zhe — süren durum",badge:"hard",sub:"Eylemin sonucu devam ediyor",
+ desc:"<strong>着 zhe</strong> fiilin ardından gelir; eylemin yarattığı DURUMUN sürdüğünü anlatır: 门开着 = kapı açık (duruyor). İki fiilli cümlede 'yaparak / yaparken' anlamı verir: 听着音乐做作业.",
+ exs:[["门开着","mén kāi zhe","Kapı açık (duruyor)","durum sürüyor"],["他穿着红衣服","tā chuānzhe hóng yīfu","Kırmızı giysi giyiyor (üzerinde)",""],["她听着音乐做作业","tā tīngzhe yīnyuè zuò zuòyè","Müzik dinleyerek ödev yapıyor","eşzamanlı eylem"]],
+ puf:"在 süreci (yapıyor), 着 durumu (öyle kalmış) vurgular."},
+{icon:"📈",title:"越来越 & 一边…一边…",badge:"mid",sub:"Giderek daha... / aynı anda iki iş",
+ desc:"<strong>越来越 yuè lái yuè + sıfat:</strong> giderek daha... <strong>越 A 越 B:</strong> A oldukça B olur. <strong>一边…一边…:</strong> iki eylemi aynı anda yapmak.",
+ exs:[["天气越来越热","tiānqì yuè lái yuè rè","Hava giderek ısınıyor",""],["我越学越喜欢中文","wǒ yuè xué yuè xǐhuan Zhōngwén","Öğrendikçe Çinceyi daha çok seviyorum","越A越B"],["他一边吃饭一边看电视","tā yìbiān chīfàn yìbiān kàn diànshì","Yemek yerken TV izliyor",""]]},
+{icon:"🔗",title:"İleri Bağlaçlar (B2)",badge:"hard",sub:"不但…而且 / 连…都 / 既然 / 除非 / 难道",
+ desc:"<strong>不但…而且…</strong> yalnızca değil, üstelik. <strong>连…都/也…</strong> bile. <strong>既然…就…</strong> madem... o halde. <strong>除非…否则…</strong> ...olmadıkça aksi takdirde. <strong>难道…吗?</strong> yoksa...mı? (retorik vurgu).",
+ exs:[["他不但会英语，而且会汉语","tā búdàn huì Yīngyǔ, érqiě huì Hànyǔ","Yalnızca İngilizce değil, Çince de biliyor",""],["连孩子都知道","lián háizi dōu zhīdào","Çocuklar bile biliyor",""],["难道你不知道吗?","nándào nǐ bù zhīdào ma?","Yoksa bilmiyor musun?","retorik"]]},
+{icon:"🐉",title:"成语 Chengyu — 4'lü deyimler",badge:"hard",sub:"Çoğu klasik bir hikâyeden gelir",
+ desc:"<strong>成语 chéngyǔ</strong>: dört karakterli kalıplaşmış deyimler. Anlamları çoğu zaman karakterlerin toplamından çıkarılamaz; arkasında tarihî bir hikâye vardır. B2'den itibaren metinlerde sık görülür; doğru kullanım, dilin en güçlü 'doğallık' göstergesidir.",
+ exs:[["入乡随俗","rùxiāngsuísú","Bulunduğun yerin âdetine uy","'köye girince âdete uy'"],["一举两得","yījǔliǎngdé","Bir taşla iki kuş","'tek hamle, iki kazanç'"],["熟能生巧","shúnéngshēngqiǎo","Pratik ustalaştırır","'ustalık alışkanlıktan doğar'"]],
+ puf:"Deyimler 成语 kelime kategorisinden 16 temel chengyu çalışabilirsin."},
+{icon:"🏛",title:"Resmî / Yazılı Dil (C1)",badge:"hard",sub:"与其…不如 / 鉴于 / 以免 / 倘若",
+ desc:"Yazılı ve resmî dilde günlük eşdeğerlerin yerini bu yapılar alır: <strong>与其 A 不如 B</strong> A yapmaktansa B daha iyi. <strong>鉴于</strong> ...göz önüne alındığında. <strong>以免</strong> ...maması için. <strong>倘若</strong> = 如果'nun resmî hali.",
+ exs:[["与其抱怨，不如行动","yǔqí bàoyuàn, bùrú xíngdòng","Şikâyet etmektense harekete geç",""],["请带伞，以免淋雨","qǐng dài sǎn, yǐmiǎn lín yǔ","Islanmamak için şemsiye al",""],["鉴于目前情况…","jiànyú mùqián qíngkuàng…","Mevcut durum göz önüne alındığında…","rapor/sözleşme dili"]]},
+{icon:"📜",title:"Klasik Kalıntılar (C2)",badge:"hard",sub:"之 / 乃 / 而已 / 切勿",
+ desc:"Klasik Çinceden (文言) modern yazıya geçen öğeler: <strong>之 zhī</strong> = 的 (iyelik), <strong>乃 nǎi</strong> = 就是 (işte ...dır), <strong>而已 éryǐ</strong> = ...den ibaret/sadece, <strong>切勿 qièwù</strong> = kesinlikle yapmayın (resmî yasak).",
+ exs:[["失败乃成功之母","shībài nǎi chénggōng zhī mǔ","Başarısızlık, başarının anasıdır","乃=就是, 之=的"],["开个玩笑而已","kāi ge wánxiào éryǐ","Sadece şakaydı, o kadar",""],["切勿吸烟","qièwù xīyān","Sigara içmek kesinlikle yasaktır","tabela/uyarı dili"]]},
 ];
 
 const ALL=Object.values(DATA).flat();
@@ -1162,6 +1249,257 @@ function checkSO(s){
   }
 }
 initSorala();
+
+/* ════ SEVİYE YOLU (PLAN) ════ */
+const LEVELS=[
+{id:'a1',badge:'A1',title:'Başlangıç → A1',hsk:'≈ HSK 1 · ~8 hafta',
+note:'<b>Konu özeti:</b> Bu seviyede Çincenin ses sistemini (pinyin + 4 ton), temel cümle yapısını (Özne–Yüklem–Nesne) ve ~150 kelimeyi öğrenirsin. Çince fiil çekimi yoktur: 我是 / 你是 / 他是 hep aynıdır. Soru için cümle sonuna 吗 (ma) eklenir, olumsuzluk 不 (bù) ile yapılır. Hedef: kendini tanıtmak, selamlaşmak, sayılar ve basit alışveriş.',
+units:[
+{t:'Hafta 1-2 · Telaffuz ve Tonlar',items:[
+['Pinyin sistemini ve 4 tonu öğren (mā má mǎ mà). Gramer sekmesindeki ton kartlarını oku.','gram'],
+['Selamlaşma kelimelerini çalış: 你好, 谢谢, 再见, 对不起.','vocab'],
+['Yaz sekmesinde ilk karakterlerini çiz: 你, 好, 我.','write']]},
+{t:'Hafta 3-4 · Kendini Tanıtma',items:[
+['Zamirler kategorisini bitir (我, 你, 他, 她, 我们...).','vocab'],
+['我叫…, 我是… kalıplarını Cümle sekmesinden dinle ve tekrar et.','sent'],
+['0–100 arası sayıları öğren.','numbers']]},
+{t:'Hafta 5-6 · Temel Fiiller ve Sorular',items:[
+['Temel fiilleri çalış: 是, 有, 去, 来, 吃, 喝, 看, 说.','vocab'],
+['吗 sorusu ve 不 olumsuzluğunu gramerden oku; 10 örnek cümle kur.','gram'],
+['Çoktan seçmeli testte 2 kategori seçip %80 üzeri yap.','quiz']]},
+{t:'Hafta 7-8 · Pekiştirme',items:[
+['Sırala oyununda 10 cümleyi doğru diz.','sorala'],
+['Pinyin yazma testinde öğrendiğin kategorileri dene.','quiz'],
+['Aşağıdaki A1 Seviye Testini çöz (%70 ve üzeri geçer).',null]]}],
+test:[
+{q:'"你好" ne demektir?',o:['Teşekkürler','Merhaba','Hoşça kal','Özür dilerim'],c:1},
+{q:'"Benim adım Ali" nasıl söylenir?',o:['我叫 Ali','我是叫 Ali','叫我 Ali','我的 Ali'],c:0},
+{q:'谢谢 kelimesinin pinyini hangisidir?',o:['zàijiàn','nǐ hǎo','xièxie','duìbuqǐ'],c:2},
+{q:'"içmek" fiili hangisidir?',o:['吃','看','去','喝'],c:3},
+{q:'"Ben öğrenci değilim" cümlesinde boşluğa ne gelir? 我__是学生',o:['吗','不','的','了'],c:1},
+{q:'Doğru kelime sırası hangisi? (O bir öğretmendir)',o:['老师是他','他老师是','他是老师','是他老师'],c:2},
+{q:'吗 (ma) edatı ne işe yarar?',o:['Geçmiş zaman yapar','Evet/hayır sorusu yapar','İyelik bildirir','Çoğul yapar'],c:1},
+{q:'三 hangi sayıdır?',o:['2','3','4','5'],c:1},
+{q:'我有一个苹果 ne demektir?',o:['Bir elma istiyorum','Elma yemiyorum','Bir elmam var','Elma çok güzel'],c:2},
+{q:'Mandarin Çincesinde kaç ana ton vardır?',o:['2','3','4','5'],c:2}]},
+
+{id:'a2',badge:'A2',title:'A1 → A2',hsk:'≈ HSK 2 · ~10 hafta',
+note:'<b>Konu özeti:</b> Artık zaman kavramlarını (昨天 dün, 明天 yarın), tamamlanma eki 了 (le), deneyim eki 过 (guo), iyelik eki 的 (de) ve ölçü kelimelerini (个, 本, 杯...) kullanmayı öğrenirsin. 比 (bǐ) ile karşılaştırma yapılır: 他比我高 = O benden uzun. Hedef günlük rutin, alışveriş, saat ve tarih hakkında konuşmak; ~300 kelime.',
+units:[
+{t:'Hafta 1-3 · Zaman ve Tarih',items:[
+['Günler ve aylar kategorilerini bitir.','vocab'],
+['现在几点? (Saat kaç?) kalıbını ve saat söylemeyi öğren.','sent'],
+['了 ve 过 anlatımlarını gramerden oku; 5\'er örnek yaz.','gram']]},
+{t:'Hafta 4-6 · Ölçü Kelimeleri ve Alışveriş',items:[
+['Ölçü kelimelerini çalış (个, 本, 杯, 张, 件...).','numbers'],
+['多少钱? (Ne kadar?) ile alışveriş cümlelerini dinle.','sent'],
+['Renkler ve günlük eşya kategorilerini bitir.','vocab']]},
+{t:'Hafta 7-8 · Karşılaştırma ve Konum',items:[
+['比 karşılaştırması ve 在 + yer yapısını gramerden öğren.','gram'],
+['Konum edatlarını (上, 下, 里, 旁边...) çalış.','vocab']]},
+{t:'Hafta 9-10 · Pekiştirme',items:[
+['Tüm A2 kategorilerinde çoktan seçmeli %80+ yap.','quiz'],
+['Sırala oyununda 15 cümle bitir.','sorala'],
+['A2 Seviye Testini çöz.',null]]}],
+test:[
+{q:'的 (de) edatının temel işlevi nedir?',o:['Soru yapmak','İyelik / niteleme (benim, kırmızı olan...)','Geçmiş zaman','Olumsuzluk'],c:1},
+{q:'"Dün" hangisidir?',o:['明天','今天','昨天','现在'],c:2},
+{q:'我吃了饭 cümlesindeki 了 ne anlatır?',o:['Eylemin gerçekleştiğini / tamamlandığını','Gelecek planı','İstek','Soru'],c:0},
+{q:'Boşluğa hangi ölçü kelimesi gelir? 一__书',o:['个','杯','本','张'],c:2},
+{q:'你去过中国吗? cümlesindeki 过 ne anlatır?',o:['Şu an yapıyor olmayı','Geçmişte yaşanmış deneyimi','Zorunluluğu','Gelecek zamanı'],c:1},
+{q:'"Saat kaç?" nasıl sorulur?',o:['几个钟?','现在几点?','多少时间?','什么天?'],c:1},
+{q:'他比我高 ne demektir?',o:['Ben ondan uzunum','O benim kadar uzun','O benden uzun','O uzun değil'],c:2},
+{q:'我在家 cümlesindeki 在 ne anlatır?',o:['Sahiplik','Bir yerde olmayı (-de/-da)','Geçmiş zaman','İstek'],c:1},
+{q:'多少钱 ne demektir?',o:['Kaç kişi?','Saat kaç?','Ne kadar (fiyat)?','Nerede?'],c:2},
+{q:'一起 ne demektir?',o:['Yalnız','Birlikte','Hemen','Bazen'],c:1}]},
+
+{id:'b1',badge:'B1',title:'A2 → B1',hsk:'≈ HSK 3 · ~12 hafta',
+note:'<b>Konu özeti:</b> Orta seviyenin kapısı. 把 (bǎ) yapısıyla nesne fiilin önüne alınır: 我把书放在桌子上. 被 (bèi) edilgen yapar. Bağlaç çiftleri devreye girer: 因为…所以… (çünkü…bu yüzden), 虽然…但是… (…rağmen…). Sonuç tamlayıcıları (听懂 dinleyip anlamak, 看完 okuyup bitirmek) ve yön tamlayıcıları (进来, 出去) öğrenilir. Hedef ~600 kelime, akıcı paragraf kurma.',
+units:[
+{t:'Hafta 1-4 · 把 ve 被 Yapıları',items:[
+['把 cümle yapısını gramerden oku; 10 örnek dönüştür.','gram'],
+['被 edilgen yapısını gramerden oku; 5 cümle kur.','gram'],
+['B1 Kelimeler setini ve ticaret kelimelerini çalış.','vocab']]},
+{t:'Hafta 5-8 · Bağlaçlar ve Tamlayıcılar',items:[
+['因为…所以…, 虽然…但是…, 一边…一边… kalıplarını çalış.','gram'],
+['Sonuç tamlayıcılarını (懂, 完, 到, 好) gramerden öğren.','gram'],
+['Cümle panelindeki ticaret cümlelerini bitir.','sent']]},
+{t:'Hafta 9-12 · Akıcılık',items:[
+['越来越 (giderek daha), 应该 (-meli), 着 (süreklilik) yapılarını öğren.','gram'],
+['Kendi günlük rutinini 8-10 cümlelik paragraf olarak yaz.',null],
+['B1 Seviye Testini çöz.',null]]}],
+test:[
+{q:'我把书放在桌子上 cümlesinde 把 ne yapar?',o:['Soru sorar','Nesneyi fiilin önüne taşır','Edilgen yapar','Gelecek zaman yapar'],c:1},
+{q:'被 (bèi) yapısı ne işe yarar?',o:['Karşılaştırma','Edilgen çatı (-tarafından)','İyelik','Emir kipi'],c:1},
+{q:'虽然…但是… ne anlama gelir?',o:['Çünkü… bu yüzden…','Hem… hem…','…olmasına rağmen… ama…','Eğer… o zaman…'],c:2},
+{q:'越来越冷 ne demektir?',o:['Çok soğuk','Giderek daha soğuk','Soğuk değil','En soğuk'],c:1},
+{q:'一边吃饭一边看电视 ne anlatır?',o:['Önce yemek sonra TV','Aynı anda yemek yiyip TV izlemek','TV izlerken uyumak','Yemekten nefret etmek'],c:1},
+{q:'听懂 ne demektir?',o:['Dinlemek istemek','Dinleyip anlamak','Yanlış duymak','Dinlememek'],c:1},
+{q:'应该 (yīnggāi) ne anlatır?',o:['Yapabilmek','Yapmak istemek','Yapmalı (gereklilik)','Yapmış olmak'],c:2},
+{q:'因为…所以… kalıbı hangisidir?',o:['Rağmen… ama…','Çünkü… bu yüzden…','Ya… ya da…','Ne… ne de…'],c:1},
+{q:'门开着 cümlesindeki 着 ne anlatır?',o:['Eylem bitti','Durumun sürdüğünü (kapı açık duruyor)','Soru','Gelecek'],c:1},
+{q:'进来 ne demektir?',o:['Dışarı çık','İçeri gel','Yukarı çık','Geri dön'],c:1}]},
+
+{id:'b2',badge:'B2',title:'B1 → B2',hsk:'≈ HSK 4 · ~16 hafta',
+note:'<b>Konu özeti:</b> İleri bağlaçlar ve vurgu yapıları: 不但…而且… (yalnızca değil, üstelik), 连…都… (bile), 难道 (yoksa…mı? retorik), 除非 (olmadıkça), 既然 (madem). İlk chengyu\'lar (4 karakterli deyimler) başlar: 马马虎虎 (şöyle böyle). Hedef ~1200 kelime; haber, e-posta ve iş yazışmalarını anlayabilmek, görüş bildirip gerekçelendirmek.',
+units:[
+{t:'Hafta 1-5 · İleri Bağlaçlar',items:[
+['不但…而且…, 既然…就…, 除非…否则… kalıplarını gramerden çalış; 15 cümle kur.','gram'],
+['连…都… ve 难道 vurgu yapılarını gramerden öğren.','gram'],
+['B2 Kelimeler ve ticaret setlerini testle pekiştir.','quiz']]},
+{t:'Hafta 6-10 · Okuma ve Deyimler',items:[
+['Deyimler 成语 kategorisinden 10 chengyu öğren.','vocab'],
+['Basitleştirilmiş Çince haber metinleri okumaya başla (The Chairman\'s Bao, Du Chinese gibi kaynaklar).',null],
+['Her hafta 1 kısa metni sesli oku ve kaydet.',null]]},
+{t:'Hafta 11-16 · Üretim',items:[
+['Haftada 1 e-posta / iş yazısı taslağı yaz (dış ticaret konulu).',null],
+['HSK 4 dinleme örnekleri çöz.',null],
+['B2 Seviye Testini çöz.',null]]}],
+test:[
+{q:'不但…而且… ne anlama gelir?',o:['Yalnızca… değil, üstelik…','Ya… ya da…','Ne… ne de…','Önce… sonra…'],c:0},
+{q:'连他都不知道 ne demektir?',o:['O da bilmek istiyor','O bile bilmiyor','Sadece o biliyor','O asla bilmez'],c:1},
+{q:'难道 (nándào) hangi amaçla kullanılır?',o:['Kibarca rica','Retorik soru (yoksa… mı?)','Geçmiş anlatımı','Liste sıralama'],c:1},
+{q:'恐怕 (kǒngpà) ne demektir?',o:['Kesinlikle','Korkarım ki / maalesef muhtemelen','Asla','Neyse ki'],c:1},
+{q:'除非你去，否则我不去 ne demektir?',o:['Sen gidersen ben gitmem','Sen gitmedikçe ben gitmem','İkimiz de gideriz','Kimse gitmez'],c:1},
+{q:'马马虎虎 deyimi ne anlatır?',o:['Çok mükemmel','Şöyle böyle / idare eder','Çok hızlı','Tehlikeli'],c:1},
+{q:'既然你来了，就坐吧 cümlesindeki 既然 ne demektir?',o:['Eğer','Madem','Rağmen','Çünkü'],c:1},
+{q:'尽管很难，他还是做完了 cümlesinde 尽管 ne anlatır?',o:['Her ne kadar… (rağmen)','Bu yüzden','Üstelik','Aniden'],c:0},
+{q:'千万别忘了 ne demektir?',o:['Belki unutursun','Sakın unutma','Unutmak önemsiz','Hatırlamaya çalış'],c:1},
+{q:'受欢迎 ne demektir?',o:['Yorgun','Popüler / sevilen','Pahalı','Yasak'],c:1}]},
+
+{id:'c1',badge:'C1',title:'B2 → C1',hsk:'≈ HSK 5 · ~20 hafta',
+note:'<b>Konu özeti:</b> Resmi ve yazılı dil ağırlık kazanır: 与其…不如… (…maktansa …mak daha iyi), 鉴于 (göz önüne alındığında), 倘若 (eğer - resmi), 以免 (…maması için). Chengyu dağarcığı 50+\'ya çıkar. Hedef ~2500 kelime; sözleşme, rapor ve sunumları anlamak, soyut konularda tartışabilmek. Bu seviyede ana kaynak artık gerçek içeriktir: Çince podcast, dizi, haber.',
+units:[
+{t:'Hafta 1-6 · Resmi Dil',items:[
+['Resmî dil kartını (鉴于, 倘若, 以免) gramerden oku; yazılı metin çalış.','gram'],
+['与其…不如… ve 莫过于 yapılarıyla görüş cümleleri kur.',null],
+['Dış ticaret sözleşme/teklif örnekleri okumaya başla.',null]]},
+{t:'Hafta 7-13 · Yoğun Girdi',items:[
+['Haftada 2 saat Çince podcast/dizi (altyazılı → altyazısız geçiş).',null],
+['Deyimler 成语 setini bitir; her hafta 5 chengyu cümle içinde kullan.','vocab'],
+['HSK 5 okuma parçaları çöz.',null]]},
+{t:'Hafta 14-20 · Üretim ve Sunum',items:[
+['Mesleki bir konuda 300 karakterlik kompozisyon yaz.',null],
+['5 dakikalık sözlü sunum hazırla ve kaydet.',null],
+['C1 Seviye Testini çöz.',null]]}],
+test:[
+{q:'与其在家等，不如出去找 ne anlatır?',o:['Evde beklemek daha iyi','Evde beklemektense dışarı çıkıp aramak daha iyi','İkisi de aynı','Asla arama'],c:1},
+{q:'鉴于 (jiànyú) hangi bağlamda kullanılır?',o:['Günlük sohbet ünlemidir','"…göz önüne alındığında" (resmi)','Şaşkınlık bildirir','Selamlaşmadır'],c:1},
+{q:'固然 (gùrán) ne anlatır?',o:['"Kuşkusuz… ama…" (kabul + karşıtlık)','Kesin ret','Mutlu son','Acele'],c:0},
+{q:'画蛇添足 deyimi ne anlatır?',o:['Çok yetenekli olmak','Gereksiz ekleme yapıp işi bozmak','Hızlı çizmek','Yılandan korkmak'],c:1},
+{q:'倘若 (tǎngruò) neyin resmi eş anlamlısıdır?',o:['但是 (ama)','如果 (eğer)','所以 (bu yüzden)','已经 (zaten)'],c:1},
+{q:'不言而喻 ne demektir?',o:['Konuşmak yasak','Söylemeye gerek yok, aşikâr','Anlaşılması imkânsız','Sessiz kalmak iyidir'],c:1},
+{q:'带伞，以免淋雨 cümlesinde 以免 ne anlatır?',o:['…sın diye (amaç)','…maması/olmaması için (kaçınma)','…dığı için','…e rağmen'],c:1},
+{q:'凡是 (fánshì) ne anlatır?',o:['Bazıları','"Her ne… varsa / istisnasız hepsi"','Hiçbiri','Yalnızca biri'],c:1},
+{q:'这未免太贵了 ne anlatır?',o:['Hiç pahalı değil','Doğrusu bu fazla pahalı (eleştirel yumuşatma)','Fiyat bilinmiyor','Bedava'],c:1},
+{q:'人生最大的快乐莫过于… kalıbı ne anlatır?',o:['…den daha büyük mutluluk yoktur','Mutluluk imkânsızdır','Mutluluk geçicidir','…den kaçınmak gerekir'],c:0}]},
+
+{id:'c2',badge:'C2',title:'C1 → C2',hsk:'≈ HSK 6 · ~24 hafta',
+note:'<b>Konu özeti:</b> Ana dile yakın ustalık. Klasik Çinceden (文言文) gelen yapılar modern yazıda karşına çıkar: 之 (= 的), 乃 (= 就是), 而已 (…den ibaret), 何尝 (retorik). Chengyu ve edebi ifadeler doğal kullanılır. Hedef 5000+ kelime; edebiyat, akademik metin ve resmi belgeleri tam anlamak, ince nüansları (ironi, ima, üslup) yakalamak.',
+units:[
+{t:'Hafta 1-8 · Edebi ve Klasik Öğeler',items:[
+['Klasik kalıntılar kartını (之, 乃, 而已, 切勿) gramerden oku; metinde tanı.','gram'],
+['Modern Çin edebiyatından kısa öyküler oku (鲁迅, 余华 başlangıç dostu seçkiler).',null],
+['Her hafta 10 chengyu: hikâyesiyle birlikte öğren.',null]]},
+{t:'Hafta 9-16 · Akademik / Mesleki Ustalık',items:[
+['Alanınla ilgili Çince akademik makale veya sektör raporu oku.',null],
+['Çince müzakere ve toplantı simülasyonları yap (dil partneri/öğretmenle).',null],
+['HSK 6 yazma bölümü: 400 karakterlik özet yazma pratiği.',null]]},
+{t:'Hafta 17-24 · Doğallaşma',items:[
+['Altyazısız dizi/film + Çince podcast\'i günlük rutine ekle.',null],
+['Haftalık günlük (日记) tut, ana dili Çince birine düzelttir.',null],
+['C2 Seviye Testini çöz.',null]]}],
+test:[
+{q:'鞭长莫及 deyimi ne anlatır?',o:['Çok güçlü olmak','Gücü/etkisi yetişememek','Hızlı koşmak','Cezalandırmak'],c:1},
+{q:'Yazılı dilde 之 çoğunlukla neyin yerine geçer?',o:['了','的','吗','在'],c:1},
+{q:'亡羊补牢 deyimi ne anlatır?',o:['İş işten geçti, çare yok','Zarar sonrası önlem almak yine de değerlidir','Hayvancılık zordur','Asla hata yapmamak'],c:1},
+{q:'失败乃成功之母 cümlesinde 乃 ne demektir?',o:['değildir','…dır / işte odur (= 就是)','belki','asla'],c:1},
+{q:'滥竽充数 deyimi ne anlatır?',o:['Müzikte usta olmak','Ehil olmadığı halde aralara karışıp yer doldurmak','Kalabalığı sevmek','Sayı saymak'],c:1},
+{q:'只是开个玩笑而已 cümlesinde 而已 ne anlatır?',o:['Kesinlikle ciddi','"…den ibaret / sadece"','Henüz değil','Tam tersine'],c:1},
+{q:'我何尝不想去? ne anlatır?',o:['Gitmeyi hiç istemedim','"Gitmeyi istemez miyim hiç?" (elbette isterim)','Gitmek yasak','Nereye gideceğimi bilmiyorum'],c:1},
+{q:'大同小异 ne demektir?',o:['Tamamen farklı','Aşağı yukarı aynı, küçük farklarla','Büyük ve küçük','Hep tartışmalı'],c:1},
+{q:'切勿吸烟 ifadesindeki 切勿 ne anlatır?',o:['Lütfen deneyin','Kesinlikle yapmayın (resmi yasak)','Belki yapın','Sadece burada yapın'],c:1},
+{q:'见仁见智 ne anlatır?',o:['Herkes aynı düşünür','Herkesin görüşü farklıdır, yoruma açıktır','Akıllı olmak şart','Kimse bilmez'],c:1}]}
+];
+
+let PLAN=load('cn_plan',{unlocked:1,done:{},scores:{}});
+function savePlan(){save('cn_plan',PLAN);}
+function goTab(p){document.querySelector('nav button[data-p="'+p+'"]').click();window.scrollTo({top:0,behavior:'smooth'});}
+
+function renderPlan(){
+  const box=document.getElementById('planBox');
+  let track='<div class="lvlbar"><div class="ttl">🗺️ SEVİYE YOLCULUĞUN</div><div class="lvltrack">'+
+    LEVELS.map((L,i)=>{
+      const passed=PLAN.scores[L.id]>=70;
+      const cur=!passed&&i<PLAN.unlocked;
+      return '<div class="lvldot '+(passed?'done':cur?'cur':'')+'"><div class="c">'+(passed?'✓':L.badge)+'</div><div style="font-size:.6rem;margin-top:4px;opacity:.6">'+L.badge+'</div></div>';
+    }).join('')+'</div></div>';
+  let cards=LEVELS.map((L,i)=>{
+    const locked=i>=PLAN.unlocked;
+    const passed=PLAN.scores[L.id]>=70;
+    const tot=L.units.reduce((a,u)=>a+u.items.length,0);
+    const dn=L.units.reduce((a,u,ui)=>a+u.items.filter((_,ti)=>PLAN.done[L.id+'_'+ui+'_'+ti]).length,0);
+    let body='';
+    if(!locked){
+      body='<div class="lvlbody"><div class="lvlnote">'+L.note+'</div>'+
+        L.units.map((u,ui)=>'<div class="unit"><div class="ut">'+u.t+'</div>'+
+          u.items.map((it,ti)=>{
+            const k=L.id+'_'+ui+'_'+ti,ck=PLAN.done[k];
+            return '<label class="task'+(ck?' done':'')+'"><input type="checkbox" '+(ck?'checked':'')+' onchange="togTask(\''+k+'\')"><span>'+it[0]+'</span>'+(it[1]?'<button class="golink" onclick="goTab(\''+it[1]+'\')">Git →</button>':'')+'</label>';
+          }).join('')+'</div>').join('')+
+        '<button class="lvltest-btn'+(passed?' passed':'')+'" onclick="startLvlTest(\''+L.id+'\')">'+
+        (passed?'✓ Geçildi ('+PLAN.scores[L.id]+'%) — Tekrar Çöz':'📝 '+L.badge+' Seviye Testi')+'</button></div>';
+    }
+    return '<div class="lvlcard'+(locked?' locked':passed?' passed':'')+'" id="lc_'+L.id+'">'+
+      '<div class="lvlhead" onclick="'+(locked?'':'togLvl(\''+L.id+'\')')+'">'+
+      '<div class="lvlbadge">'+(locked?'🔒':L.badge)+'</div>'+
+      '<div class="ht"><b>'+L.title+'</b><small>'+L.hsk+(locked?' · Önceki testi geçince açılır':' · Görevler: '+dn+'/'+tot)+'</small></div>'+
+      '<div class="arrow">▶</div></div>'+body+'</div>';
+  }).join('');
+  box.innerHTML=track+cards;
+}
+function togLvl(id){document.getElementById('lc_'+id).classList.toggle('open');}
+function togTask(k){PLAN.done[k]=!PLAN.done[k];if(!PLAN.done[k])delete PLAN.done[k];savePlan();
+  const open=[...document.querySelectorAll('.lvlcard.open')].map(e=>e.id);
+  renderPlan();open.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add('open');});}
+
+let ltLvl=null,ltAns=[];
+function startLvlTest(id){
+  ltLvl=LEVELS.find(L=>L.id===id);ltAns=new Array(ltLvl.test.length).fill(-1);
+  const box=document.getElementById('planBox');
+  box.innerHTML='<div class="lvlbar"><div class="ttl">📝 '+ltLvl.badge+' SEVİYE TESTİ · '+ltLvl.test.length+' soru · Geçme: %70</div></div>'+
+    ltLvl.test.map((Q,qi)=>'<div class="lt-q"><div class="qt">'+(qi+1)+'. <span class="zh">'+Q.q+'</span></div><div class="lt-opts" id="lto_'+qi+'">'+
+      Q.o.map((o,oi)=>'<button onclick="ltPick('+qi+','+oi+')">'+String.fromCharCode(65+oi)+') '+o+'</button>').join('')+'</div></div>').join('')+
+    '<button class="lvltest-btn" onclick="finishLvlTest()">Testi Bitir</button>'+
+    '<button class="reset-btn" style="width:100%;margin-top:9px" onclick="renderPlan()">← Vazgeç</button>';
+  window.scrollTo({top:0});
+}
+function ltPick(qi,oi){ltAns[qi]=oi;document.querySelectorAll('#lto_'+qi+' button').forEach((b,i)=>b.classList.toggle('sel',i===oi));}
+function finishLvlTest(){
+  if(ltAns.includes(-1)){alert('Tüm soruları cevapla!');return;}
+  const ok=ltAns.filter((a,i)=>a===ltLvl.test[i].c).length;
+  const pct=Math.round(ok/ltLvl.test.length*100);
+  const pass=pct>=70;
+  if(pass){
+    PLAN.scores[ltLvl.id]=Math.max(PLAN.scores[ltLvl.id]||0,pct);
+    const idx=LEVELS.findIndex(L=>L.id===ltLvl.id);
+    PLAN.unlocked=Math.max(PLAN.unlocked,idx+2);
+    savePlan();
+  }
+  const box=document.getElementById('planBox');
+  box.innerHTML='<div class="lt-res '+(pass?'ok':'fail')+'">'+(pass?'🎉 Tebrikler! ':'😕 Bu sefer olmadı. ')+pct+'% ('+ok+'/'+ltLvl.test.length+')'+
+    (pass?'<br><small style="font-weight:400">Bir sonraki seviye açıldı!</small>':'<br><small style="font-weight:400">%70 gerekli — planındaki görevleri tamamlayıp tekrar dene.</small>')+'</div>'+
+    ltLvl.test.map((Q,qi)=>{
+      const a=ltAns[qi],c=Q.c;
+      return '<div class="lt-q"><div class="qt">'+(qi+1)+'. <span class="zh">'+Q.q+'</span></div>'+
+        '<div style="font-size:.78rem;line-height:1.6">'+
+        (a===c?'<span style="color:var(--ok);font-weight:700">✓ '+Q.o[c]+'</span>'
+        :'<span style="color:var(--red)">✗ Senin cevabın: '+Q.o[a]+'</span><br><span style="color:var(--ok);font-weight:700">✓ Doğru: '+Q.o[c]+'</span>')+'</div></div>';
+    }).join('')+
+    '<button class="lvltest-btn" onclick="renderPlan()">← Plana Dön</button>';
+  window.scrollTo({top:0});
+}
+renderPlan();
 
 refreshStats();
 </script>

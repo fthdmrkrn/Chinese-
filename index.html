@@ -296,18 +296,18 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
   </div>
 
   <nav>
-    <button class="on" data-p="vocab">📖 Kelime</button>
+    <button class="on" data-p="plan">🗺️ Plan</button>
+    <button data-p="vocab">📖 Kelime</button>
     <button data-p="quiz">🎯 Test</button>
     <button data-p="write">✍️ Yaz</button>
     <button data-p="numbers">🔢 Sayılar</button>
     <button data-p="sorala">🃏 Sırala</button>
     <button data-p="sent">💬 Cümle</button>
     <button data-p="gram">📘 Gramer</button>
-    <button data-p="plan">🗺️ Plan</button>
   </nav>
 
   <!-- VOCAB -->
-  <div id="vocab" class="panel on">
+  <div id="vocab" class="panel">
     <div id="catList" class="cats"></div>
     <div id="study" style="display:none">
       <button class="back-btn" id="backVocab">← Kategoriler</button>
@@ -389,7 +389,7 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
   <div id="gram" class="panel"></div>
 
   <!-- PLAN / SEVIYE YOLU -->
-  <div id="plan" class="panel"><div id="planBox"></div></div>
+  <div id="plan" class="panel on"><div id="planBox"></div></div>
 
   <!-- NUMBERS -->
   <div id="numbers" class="panel">
@@ -413,6 +413,8 @@ nav button.on{background:var(--ink);color:var(--paper);opacity:1;box-shadow:0 5p
 <script>
 /* ════ DATA ════ */
 const DATA={
+"Selamlaşma 问候":[
+["你好","nǐ hǎo","merhaba","hello"],["您好","nín hǎo","merhaba (resmî)","hello (formal)"],["大家好","dàjiā hǎo","herkese merhaba","hello everyone"],["早上好","zǎoshang hǎo","günaydın","good morning"],["晚上好","wǎnshang hǎo","iyi akşamlar","good evening"],["晚安","wǎn'ān","iyi geceler","good night"],["再见","zàijiàn","hoşça kal, görüşürüz","goodbye"],["明天见","míngtiān jiàn","yarın görüşürüz","see you tomorrow"],["谢谢","xièxie","teşekkürler","thanks"],["不客气","bú kèqi","rica ederim, bir şey değil","you're welcome"],["对不起","duìbuqǐ","özür dilerim","sorry"],["没关系","méi guānxi","önemli değil, sorun yok","it's okay"],["请","qǐng","lütfen; buyurun","please"],["欢迎","huānyíng","hoş geldiniz","welcome"],["你好吗?","nǐ hǎo ma?","nasılsın?","how are you?"],["我很好","wǒ hěn hǎo","çok iyiyim","I'm fine"],["好久不见","hǎojiǔ bú jiàn","uzun zamandır görüşemedik","long time no see"],["认识你很高兴","rènshi nǐ hěn gāoxìng","tanıştığımıza memnun oldum","nice to meet you"]],
 "Zamirler 代词":[["我","wǒ","ben, beni","I, me"],["你","nǐ","sen","you"],["您","nín","siz (resmi)","you (formal)"],["他","tā","o (erkek)","he, him"],["她","tā","o (kadın)","she, her"],["我们","wǒmen","biz","we, us"],["你们","nǐmen","sizler","you (plural)"],["他们","tāmen","onlar","they, them"],["它","tā","o (cansız)","it"],["这","zhè","bu","this"],["那","nà","şu, o","that"],["这些","zhèxiē","bunlar","these"],["那些","nàxiē","şunlar","those"],["自己","zìjǐ","kendi","oneself"],["大家","dàjiā","herkes","everyone"]],
 "Hitaplar 称呼":[["先生","xiānshēng","bey, efendi","mr., sir"],["小姐","xiǎojiě","hanım (genç)","miss"],["太太","tàitai","hanımefendi","madame"],["老师","lǎoshī","öğretmen","teacher"],["医生","yīshēng","doktor","doctor"],["教授","jiàoshòu","profesör","professor"],["院长","yuànzhǎng","dekan / müdür","dean / director"],["主任","zhǔrèn","müdür, şef","director, chief"],["经理","jīnglǐ","müdür (işletme)","manager"],["总经理","zǒng jīnglǐ","genel müdür","general manager"],["董事长","dǒngshì zhǎng","yönetim kurulu başkanı","chairman"],["局长","júzhǎng","daire başkanı","bureau chief"],["市长","shìzhǎng","belediye başkanı","mayor"],["部长","bùzhǎng","bakan","minister"],["校长","xiàozhǎng","okul müdürü / rektör","principal / president"],["护士","hùshi","hemşire","nurse"],["律师","lǜshī","avukat","lawyer"],["工程师","gōngchéngshī","mühendis","engineer"],["科学家","kēxuéjiā","bilim insanı","scientist"],["同志","tóngzhì","yoldaş (resmi)","comrade (formal)"],["女士","nǚshì","hanımefendi","madam / ms."]],
 "Soru Edatları 疑问词":[["什么","shénme","ne","what"],["几","jǐ","kaç (az)","how many (small)"],["多少","duōshao","kaç, ne kadar","how many/much"],["谁","shéi","kim","who"],["什么时候","shénme shíhòu","ne zaman","when"],["哪里","nǎlǐ","nerede","where"],["哪个","nǎge","hangisi","which one"],["为什么","wèishénme","neden","why"],["怎么","zěnme","nasıl","how"],["怎么样","zěnme yàng","nasıl olur","how about"],["多","duō","ne kadar (sıfat önü)","how + adj"],["吗","ma","mı/mi (soru eki)","question particle"],["呢","ne","ya sen? peki?","what about"]],
@@ -664,6 +666,19 @@ const SENT=[
 ["合作愉快!","hézuò yúkuài!","İyi işbirliği!","Happy cooperation!"]
 ];
 const GRAM=[
+// ── TONLAR & PINYIN ──
+{sec:"🎵 Tonlar & Pinyin"},
+{icon:"🎶",title:"Dört Ton",badge:"key",sub:"mā má mǎ mà — ton anlamı değiştirir",
+ desc:"Mandarin'de her hece 4 tondan birini taşır. Yanlış ton = farklı kelime. <strong>1. ton ⌐</strong> düz yüksek | <strong>2. ton /</strong> yükselen | <strong>3. ton v</strong> alçalıp yükselen | <strong>4. ton \\</strong> hızlı düşen",
+ exs:[["māmámǎmà","mā-má-mǎ-mà","anne / kenevir / at / azarlamak","aynı hece, 4 farklı anlam"],["买/卖","mǎi / mài","satın almak / satmak","3. ve 4. ton farkı"]],
+ puf:"3. ton, 3. tondan önce 2. tona döner: 你好 nǐ hǎo → níhǎo."},
+{icon:"🔕",title:"Nötr Ton",badge:"mid",sub:"Hafif, hızlı, işaretsiz ton",
+ desc:"Bazı heceler vurgusuz/hafif sesletilir ve pinyin'de <strong>ton işareti yazılmaz</strong>: 吗 ma, 的 de, 了 le, 呢 ne... Ayrıca bazı kelimelerin son hecesi nötrleşir.",
+ exs:[["东西","dōngxi","şey, eşya","xi nötr"],["名字","míngzi","isim","zi nötr"],["学生","xuésheng","öğrenci","sheng nötr"]]},
+{icon:"🔄",title:"Ton Değişimi (变调)",badge:"hard",sub:"İki 3. ton yan yana → 2. + 3.",
+ desc:"Kurallar: (1) 3. ton + 3. ton → <strong>2. ton + 3. ton</strong>. (2) <strong>不 bù</strong>, 4. ton önünde <strong>bú</strong> olur. (3) <strong>一 yī</strong>: 4. ton önünde <strong>yí</strong> (2.ton); 1./2./3. ton önünde <strong>yì</strong> (4.ton); tek başına veya sıra sayısında değişmez.",
+ exs:[["你好","nǐ hǎo → níhǎo","merhaba","3+3 → 2+3"],["不是","bù shì → bú shì","değil","4. ton önünde bú"],["一本书","yī běn shū → yì běn shū","bir kitap","3. ton önünde yì (4. ton) olur"]],
+ puf:"Günlük konuşmada 你好'yu nǐhǎo değil níhǎo diye söylersin!"},
 // ── TEMEL ──
 {sec:"🏗 Temel Yapı"},
 {icon:"🔤",title:"Cümle Sırası: SVO",badge:"easy",sub:"Özne + Fiil + Nesne — Türkçenin tersi",
@@ -716,19 +731,6 @@ const GRAM=[
 {icon:"🎯",title:"如果...就 — koşul cümlesi",badge:"mid",sub:"Eğer... o zaman...",
  desc:"<strong>如果 rúguǒ</strong> + koşul + <strong>就 jiù</strong> + sonuç. 就 tek başına 'o zaman, hemen' anlamı da taşır. Koşulsuz kullanımda da sıkça rastlanır.",
  exs:[["如果你来,就好了","rúguǒ nǐ lái jiù hǎo le","Gelirsen iyi olur",""],["如果下雨,我就不去","rúguǒ xià yǔ wǒ jiù bù qù","Yağmur yağarsa gitmem",""]]},
-// ── TONLAR & PINYIN ──
-{sec:"🎵 Tonlar & Pinyin"},
-{icon:"🎶",title:"Dört Ton",badge:"key",sub:"mā má mǎ mà — ton anlamı değiştirir",
- desc:"Mandarin'de her hece 4 tondan birini taşır. Yanlış ton = farklı kelime. <strong>1. ton ⌐</strong> düz yüksek | <strong>2. ton /</strong> yükselen | <strong>3. ton v</strong> alçalıp yükselen | <strong>4. ton \\</strong> hızlı düşen",
- exs:[["māmámǎmà","mā-má-mǎ-mà","anne / kenevir / at / azarlamak","aynı hece, 4 farklı anlam"],["买/卖","mǎi / mài","satın almak / satmak","3. ve 4. ton farkı"]],
- puf:"3. ton, 3. tondan önce 2. tona döner: 你好 nǐ hǎo → níhǎo."},
-{icon:"🔕",title:"Nötr Ton",badge:"mid",sub:"Hafif, hızlı, işaretsiz ton",
- desc:"Bazı heceler vurgusuz/hafif sesletilir ve pinyin'de <strong>ton işareti yazılmaz</strong>: 吗 ma, 的 de, 了 le, 呢 ne... Ayrıca bazı kelimelerin son hecesi nötrleşir.",
- exs:[["东西","dōngxi","şey, eşya","xi nötr"],["名字","míngzi","isim","zi nötr"],["学生","xuésheng","öğrenci","sheng nötr"]]},
-{icon:"🔄",title:"Ton Değişimi (变调)",badge:"hard",sub:"İki 3. ton yan yana → 2. + 3.",
- desc:"Kurallar: (1) 3. ton + 3. ton → <strong>2. ton + 3. ton</strong>. (2) <strong>不 bù</strong>, 4. ton önünde <strong>bú</strong> olur. (3) <strong>一 yī</strong>: 4. ton önünde <strong>yí</strong> (2.ton); 1./2./3. ton önünde <strong>yì</strong> (4.ton); tek başına veya sıra sayısında değişmez.",
- exs:[["你好","nǐ hǎo → níhǎo","merhaba","3+3 → 2+3"],["不是","bù shì → bú shì","değil","4. ton önünde bú"],["一本书","yī běn shū → yì běn shū","bir kitap","3. ton önünde yì (4. ton) olur"]],
- puf:"Günlük konuşmada 你好'yu nǐhǎo değil níhǎo diye söylersin!"},
 // ── İLERİ SEVİYE (B1+) ──
 {sec:"🚀 İleri Seviye (B1+)"},
 {icon:"📦",title:"把 bǎ — nesneyi öne alma",badge:"hard",sub:"Özne + 把 + nesne + fiil + ek",
@@ -1257,7 +1259,7 @@ note:'<b>Konu özeti:</b> Bu seviyede Çincenin ses sistemini (pinyin + 4 ton), 
 units:[
 {t:'Hafta 1-2 · Telaffuz ve Tonlar',items:[
 ['Pinyin sistemini ve 4 tonu öğren (mā má mǎ mà). Gramer sekmesindeki ton kartlarını oku.','gram'],
-['Selamlaşma kelimelerini çalış: 你好, 谢谢, 再见, 对不起.','vocab'],
+['Selamlaşma 问候 kategorisini bitir (你好, 谢谢, 再见...).','vocab'],
 ['Yaz sekmesinde ilk karakterlerini çiz: 你, 好, 我.','write']]},
 {t:'Hafta 3-4 · Kendini Tanıtma',items:[
 ['Zamirler kategorisini bitir (我, 你, 他, 她, 我们...).','vocab'],

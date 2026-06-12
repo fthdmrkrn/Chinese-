@@ -982,7 +982,7 @@ function renderQ(){
   const meta=(qIdx+1)+' / '+qWords.length+' &nbsp;·&nbsp; ✓'+qOk+' ✗'+qErr;
   const hidden=(et==='listen'||et==='tone');
   const qHanContent=et==='trzh'?'<span style="font-size:1.5rem;font-family:var(--f-ui);font-weight:700">'+w[2]+'</span>':(hidden?'<span class="listen-q">🎧</span>':w[0]);
-  const header='<div class="qcard"><div class="q-han" id="qHan">'+qHanContent+'</div><div class="q-pin" id="qPin">'+((hidden||et==='trzh')?'&nbsp;':w[1])+'</div><div class="q-meta">'+meta+'</div><div class="q-streak">'+streak+'</div><button class="sound-btn" id="qSoundBtn" style="margin:12px auto 0'+(et==='trzh'?';display:none':'')+'">🔊 '+(hidden?'Tekrar Dinle':'Telaffuzu Dinle')+'</button></div>';
+  const header='<button class="skip-link" id="qExitBtn" style="margin:0 0 7px;text-align:left;padding:4px 0">✕ Testten çık</button><div class="qcard"><div class="q-han" id="qHan">'+qHanContent+'</div><div class="q-pin" id="qPin">'+((hidden||et==='trzh')?'&nbsp;':w[1])+'</div><div class="q-meta">'+meta+'</div><div class="q-streak">'+streak+'</div><button class="sound-btn" id="qSoundBtn" style="margin:12px auto 0'+(et==='trzh'?';display:none':'')+'">🔊 '+(hidden?'Tekrar Dinle':'Telaffuzu Dinle')+'</button></div>';
   function reveal(){document.getElementById('qHan').innerHTML=w[0];document.getElementById('qPin').innerHTML=w[1];document.getElementById('qSoundBtn').style.display='';}
   function answered(ok){recordAnswer(w[0],ok);if(ok){qOk++;qStr++;}else{qErr++;qStr=0;}setTimeout(()=>{qIdx++;renderQ();},(hidden||et==='trzh'||et==='speak')?1400:850);}
 
@@ -1064,6 +1064,7 @@ function renderQ(){
     inp.onkeydown=e=>{if(e.key==='Enter')checkPin();};
   }
   document.getElementById('qSoundBtn').onclick=function(){speak(w[0],this);};
+  document.getElementById('qExitBtn').onclick=()=>{if(srsMode){srsMode=false;document.getElementById('srsBox').style.display='none';document.getElementById('srsHome').style.display='block';refreshSrs();}else{document.getElementById('qBox').style.display='none';document.getElementById('qSetup').style.display='block';}};
 }
 
 function showResult(){
